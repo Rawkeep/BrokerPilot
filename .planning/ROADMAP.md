@@ -30,7 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User data persists across browser sessions (IndexedDB for data, localStorage for settings)
   4. User can enter a BYOK API key and it is stored encrypted in the browser (retrievable but not readable in DevTools)
   5. App is deployed on Railway with health check passing and Docker build succeeding
-**Plans**: TBD
+**Plans:** 4 plans
+Plans:
+- [ ] 01-01-PLAN.md -- Project scaffolding, Express 5 backend, Docker/Railway deployment
+- [ ] 01-02-PLAN.md -- StorageAdapter (IndexedDB), CryptoService (AES-256-GCM), Zustand stores
+- [ ] 01-03-PLAN.md -- Glassmorphism design system, multi-theme CSS, glass UI components
+- [ ] 01-04-PLAN.md -- App shell, navigation, German i18n, settings page, integration checkpoint
 **UI hint**: yes
 
 ### Phase 2: CRM & Pipeline
@@ -90,7 +95,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Infrastructure | 0/TBD | Not started | - |
+| 1. Foundation & Infrastructure | 0/4 | Planning complete | - |
 | 2. CRM & Pipeline | 0/TBD | Not started | - |
 | 3. Market Data | 0/TBD | Not started | - |
 | 4. AI Integration Layer | 0/TBD | Not started | - |
