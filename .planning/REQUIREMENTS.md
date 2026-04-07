@@ -1,7 +1,7 @@
 # Requirements: BrokerPilot
 
 **Defined:** 2026-04-08
-**Core Value:** Ein Broker kann einen Lead in 5 Minuten durch die komplette Pipeline führen — von der Qualifizierung über KI-gestützte Marktanalyse bis zum personalisierten Angebot.
+**Core Value:** Ein Broker kann einen Lead in 5 Minuten durch die komplette Pipeline fuehren -- von der Qualifizierung ueber KI-gestuetzte Marktanalyse bis zum personalisierten Angebot.
 
 ## v1 Requirements
 
@@ -31,7 +31,7 @@
 
 - [ ] **AI-01**: User can connect any of 6 AI providers (Claude, GPT, Gemini, Mistral, Groq, OpenRouter) via BYOK API key
 - [ ] **AI-02**: Freemium gate limits to 5 free AI requests/day without API key
-- [ ] **AI-03**: AI proxy on Express backend relays requests — BYOK keys flow per-request, never persisted server-side
+- [ ] **AI-03**: AI proxy on Express backend relays requests -- BYOK keys flow per-request, never persisted server-side
 - [ ] **AI-04**: All AI agent outputs are validated via Zod schemas (no hallucinated numbers without source)
 - [ ] **AI-05**: Agent cost guards: maxIterations, token budgets, and circuit breakers prevent runaway costs
 
@@ -46,7 +46,7 @@
 
 - [ ] **UI-01**: Glassmorphism UI with dark mode (light/dark toggle + system preference detection)
 - [ ] **UI-02**: German-language UI for all user-facing text
-- [ ] **UI-03**: Responsive design — mobile-first, works on tablet and desktop
+- [ ] **UI-03**: Responsive design -- mobile-first, works on tablet and desktop
 - [ ] **UI-04**: Agent results stream to the UI via SSE (Server-Sent Events) with real-time progress indicators
 
 ### Infrastructure
@@ -66,9 +66,9 @@
 
 ### Multi-Agent Orchestration
 
-- **ORCH-01**: LangGraph supervisor orchestrates Lead-to-Deal pipeline (Qualifier → Analyst → SWOT → Offer)
+- **ORCH-01**: LangGraph supervisor orchestrates Lead-to-Deal pipeline (Qualifier -> Analyst -> SWOT -> Offer)
 - **ORCH-02**: SSE streaming of intermediate agent results during pipeline execution
-- **ORCH-03**: Partial failure recovery — if one agent fails, others still return results
+- **ORCH-03**: Partial failure recovery -- if one agent fails, others still return results
 
 ### Portfolio & Crypto
 
@@ -85,7 +85,7 @@
 ### Context Persistence
 
 - **CTX-01**: context-mode MCP server integration for session persistence across weeks
-- **CTX-02**: Agent session memory — AI remembers prior analyses for a lead
+- **CTX-02**: Agent session memory -- AI remembers prior analyses for a lead
 
 ### Cloud & Scaling
 
@@ -96,56 +96,56 @@
 
 | Feature | Reason |
 |---------|--------|
-| Trade execution / order placement | BaFin/FMA/FINMA regulatory burden, brokerage licensing required — provide analysis + deep-links to brokerages instead |
-| Real-time WebSocket market data | Expensive data feeds, unnecessary for advisory use case — polling with 30s-5min intervals sufficient |
-| Custom AI model training | Requires ML infrastructure and compute — BYOK + excellent system prompts + MCP context instead |
-| Native mobile app | Separate codebase, app store overhead — responsive PWA covers 90% of mobile use cases |
-| Email/calendar integration | OAuth complexity, provider-specific — manual scheduling + copy-to-clipboard in v1 |
-| Automated web scraping | Legal issues (TOS violations), brittle scrapers — API integrations only |
-| Blockchain wallet connection | Web3 complexity, security concerns — manual portfolio entry in v1 |
-| AI chat as primary UX | Chat is terrible for structured broker workflows — AI triggered by specific actions instead |
-| Regulatory compliance engine | Legal liability, constantly changing per jurisdiction — disclaimers + links to checklists |
+| Trade execution / order placement | BaFin/FMA/FINMA regulatory burden, brokerage licensing required -- provide analysis + deep-links to brokerages instead |
+| Real-time WebSocket market data | Expensive data feeds, unnecessary for advisory use case -- polling with 30s-5min intervals sufficient |
+| Custom AI model training | Requires ML infrastructure and compute -- BYOK + excellent system prompts + MCP context instead |
+| Native mobile app | Separate codebase, app store overhead -- responsive PWA covers 90% of mobile use cases |
+| Email/calendar integration | OAuth complexity, provider-specific -- manual scheduling + copy-to-clipboard in v1 |
+| Automated web scraping | Legal issues (TOS violations), brittle scrapers -- API integrations only |
+| Blockchain wallet connection | Web3 complexity, security concerns -- manual portfolio entry in v1 |
+| AI chat as primary UX | Chat is terrible for structured broker workflows -- AI triggered by specific actions instead |
+| Regulatory compliance engine | Legal liability, constantly changing per jurisdiction -- disclaimers + links to checklists |
 
 ## Traceability
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CRM-01 | TBD | Pending |
-| CRM-02 | TBD | Pending |
-| CRM-03 | TBD | Pending |
-| CRM-04 | TBD | Pending |
-| CRM-05 | TBD | Pending |
-| CRM-06 | TBD | Pending |
-| DATA-01 | TBD | Pending |
-| DATA-02 | TBD | Pending |
-| DATA-03 | TBD | Pending |
-| MKT-01 | TBD | Pending |
-| MKT-02 | TBD | Pending |
-| MKT-03 | TBD | Pending |
-| MKT-04 | TBD | Pending |
-| AI-01 | TBD | Pending |
-| AI-02 | TBD | Pending |
-| AI-03 | TBD | Pending |
-| AI-04 | TBD | Pending |
-| AI-05 | TBD | Pending |
-| AGT-01 | TBD | Pending |
-| AGT-02 | TBD | Pending |
-| AGT-03 | TBD | Pending |
-| AGT-04 | TBD | Pending |
-| UI-01 | TBD | Pending |
-| UI-02 | TBD | Pending |
-| UI-03 | TBD | Pending |
-| UI-04 | TBD | Pending |
-| INF-01 | TBD | Pending |
-| INF-02 | TBD | Pending |
-| INF-03 | TBD | Pending |
-| INF-04 | TBD | Pending |
+| CRM-01 | Phase 2 | Pending |
+| CRM-02 | Phase 2 | Pending |
+| CRM-03 | Phase 2 | Pending |
+| CRM-04 | Phase 2 | Pending |
+| CRM-05 | Phase 2 | Pending |
+| CRM-06 | Phase 2 | Pending |
+| DATA-01 | Phase 1 | Pending |
+| DATA-02 | Phase 1 | Pending |
+| DATA-03 | Phase 1 | Pending |
+| MKT-01 | Phase 3 | Pending |
+| MKT-02 | Phase 3 | Pending |
+| MKT-03 | Phase 3 | Pending |
+| MKT-04 | Phase 3 | Pending |
+| AI-01 | Phase 4 | Pending |
+| AI-02 | Phase 4 | Pending |
+| AI-03 | Phase 4 | Pending |
+| AI-04 | Phase 4 | Pending |
+| AI-05 | Phase 4 | Pending |
+| AGT-01 | Phase 5 | Pending |
+| AGT-02 | Phase 5 | Pending |
+| AGT-03 | Phase 5 | Pending |
+| AGT-04 | Phase 5 | Pending |
+| UI-01 | Phase 1 | Pending |
+| UI-02 | Phase 1 | Pending |
+| UI-03 | Phase 1 | Pending |
+| UI-04 | Phase 5 | Pending |
+| INF-01 | Phase 1 | Pending |
+| INF-02 | Phase 1 | Pending |
+| INF-03 | Phase 1 | Pending |
+| INF-04 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 30 total
-- Mapped to phases: 0
-- Unmapped: 30 ⚠️
+- Mapped to phases: 30
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-08*
-*Last updated: 2026-04-08 after initial definition*
+*Last updated: 2026-04-08 after roadmap creation*
