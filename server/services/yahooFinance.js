@@ -48,6 +48,20 @@ export async function getStockChart(symbol, range = '6mo') {
 }
 
 /**
+ * Get quotes for multiple symbols in parallel.
+ * @param {string[]} symbols - Array of stock ticker symbols
+ * @returns {Promise<Array<object>>} Array of normalized quote objects
+ */
+export async function getMultiQuote(symbols) {
+  const results = await Promise.allSettled(
+    symbols.map((sym) => getQuote(sym))
+  );
+  return results
+    .filter((r) => r.status === 'fulfilled')
+    .map((r) => r.value);
+}
+
+/**
  * Convert a range string to a start Date.
  * @param {string} range
  * @returns {Date}

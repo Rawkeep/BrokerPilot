@@ -3,10 +3,12 @@ import { GlassCard } from '../ui/GlassCard.jsx';
 import { GlassButton } from '../ui/GlassButton.jsx';
 import { StockSearch } from '../market/StockSearch.jsx';
 import { StockQuoteCard } from '../market/StockQuoteCard.jsx';
+import { StockOverview } from '../market/StockOverview.jsx';
 import { CryptoTable } from '../market/CryptoTable.jsx';
 import { PriceChart } from '../market/PriceChart.jsx';
 import { useMarketData } from '../../hooks/useMarketData.js';
 import {
+  fetchStockOverview,
   fetchStockQuote,
   fetchStockChart,
   fetchCryptoMarkets,
@@ -26,6 +28,11 @@ export function MarktPage() {
   const [cryptoChartDays, setCryptoChartDays] = useState(30);
 
   // --- Data fetching ---
+  const stockOverview = useMarketData(
+    () => fetchStockOverview(),
+    { enabled: activeTab === 'stocks' }
+  );
+
   const stockQuote = useMarketData(
     () => fetchStockQuote(stockSymbol),
     { enabled: !!stockSymbol, deps: [stockSymbol] }
@@ -49,6 +56,11 @@ export function MarktPage() {
   // --- Handlers ---
   const handleStockSearch = (sym) => {
     setStockSymbol(sym.toUpperCase());
+    setChartRange('6mo');
+  };
+
+  const handleOverviewSelect = (sym) => {
+    setStockSymbol(sym);
     setChartRange('6mo');
   };
 
@@ -77,6 +89,8 @@ export function MarktPage() {
       {activeTab === 'stocks' && (
         <>
           <StockSearch onSearch={handleStockSearch} />
+
+          {/* Selected stock detail */}
           {stockSymbol ? (
             <>
               <StockQuoteCard
@@ -105,11 +119,22 @@ export function MarktPage() {
                   <p className="market-loading">{t.chart.noData}</p>
                 )}
               </GlassCard>
+              <GlassButton
+                variant="default"
+                onClick={() => setStockSymbol('')}
+                style={{ marginTop: '0.75rem' }}
+              >
+                ← Zurueck zur Uebersicht
+              </GlassButton>
             </>
           ) : (
-            <GlassCard hoverable={false}>
-              <p>{t.noQuote}</p>
-            </GlassCard>
+            /* Stock overview table */
+            <StockOverview
+              stocks={stockOverview.data}
+              loading={stockOverview.loading}
+              error={stockOverview.error}
+              onSelectStock={handleOverviewSelect}
+            />
           )}
         </>
       )}

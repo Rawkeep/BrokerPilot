@@ -4,6 +4,7 @@ import { LeadQualifierResult } from '../agents/LeadQualifierResult.jsx';
 import { MarketAnalystResult } from '../agents/MarketAnalystResult.jsx';
 import { SWOTMatrix } from '../agents/SWOTMatrix.jsx';
 import { PdfDownloadButton } from '../export/PdfDownloadButton.jsx';
+import { ProposalCard } from './ProposalCard.jsx';
 import { de } from '../../i18n/de.js';
 
 const RESULT_COMPONENTS = {
@@ -75,6 +76,11 @@ export function PipelineResults({ steps, lead, overallResult }) {
 
         return null;
       })}
+
+      {/* Generated Proposal */}
+      {Object.keys(allResults).length > 0 && (
+        <ProposalCard lead={lead} pipelineResults={allResults} />
+      )}
 
       {/* Full pipeline PDF download */}
       {Object.keys(allResults).length > 0 && (

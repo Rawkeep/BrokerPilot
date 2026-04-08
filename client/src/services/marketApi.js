@@ -4,6 +4,37 @@
  */
 
 /**
+ * Fetch stock overview (curated watchlist with indices & top stocks).
+ * @returns {Promise<Array<object>>} Array of normalized quote objects
+ */
+export async function fetchStockOverview() {
+  const res = await fetch('/api/market/stocks/overview');
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || res.statusText);
+  }
+  return res.json();
+}
+
+/**
+ * Fetch quotes for a custom list of symbols (watchlist).
+ * @param {string[]} symbols - Array of stock ticker symbols
+ * @returns {Promise<Array<object>>} Array of normalized quote objects
+ */
+export async function fetchStockBatch(symbols) {
+  const res = await fetch('/api/market/stocks/batch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ symbols }),
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || res.statusText);
+  }
+  return res.json();
+}
+
+/**
  * Fetch a stock quote by ticker symbol.
  * @param {string} symbol - Stock ticker (e.g., "AAPL", "SAP.DE")
  * @returns {Promise<object>} Normalized quote object

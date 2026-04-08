@@ -244,3 +244,147 @@
     text-align: left;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Proposal Card
+   -------------------------------------------------------------------------- */
+.proposal-card {
+  padding: var(--spacing-lg);
+}
+
+.proposal-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.proposal-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.proposal-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.proposal-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.proposal-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.proposal-card__badges {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.proposal-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  min-width: 100px;
+}
+
+.proposal-badge__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.proposal-badge__value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.proposal-badge__value--score {
+  color: var(--color-accent);
+}
+
+.proposal-badge__value--kaufen {
+  color: var(--color-success);
+}
+
+.proposal-badge__value--halten {
+  color: var(--color-warning, #f59e0b);
+}
+
+.proposal-badge__value--verkaufen {
+  color: var(--color-error);
+}
+
+/* --- Proposal Sections --- */
+.proposal-section {
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.proposal-section__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.proposal-section__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.proposal-section__list {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.proposal-section__list strong {
+  color: var(--color-text);
+}
+
+.proposal-section__list ul,
+.proposal-section__list ol {
+  margin: var(--spacing-xs) 0 0 var(--spacing-md);
+  padding: 0;
+}
+
+.proposal-section__list li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
+
+.proposal-section__steps {
+  margin: 0;
+  padding: 0 0 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.proposal-section__steps li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
