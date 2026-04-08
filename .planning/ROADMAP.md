@@ -96,7 +96,10 @@ Plans:
   3. User can trigger the SWOT Strategist agent to get a structured SWOT matrix for any deal or investment opportunity
   4. Agent results stream to the UI in real-time via SSE with visible progress indicators
   5. All agent outputs are in German with accurate financial terminology
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 05-01-PLAN.md -- Backend agent engine: 3 agent definitions with German prompts, Zod schemas, data enrichment, SSE streaming orchestrator (TDD)
+- [ ] 05-02-PLAN.md -- Frontend agent UI: trigger buttons, result cards, SSE streaming hook, SWOT matrix, agent history
 **UI hint**: yes
 
 ## Progress
@@ -111,4 +114,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. CRM & Pipeline | 0/4 | Planning complete | - |
 | 3. Market Data | 0/2 | Planning complete | - |
 | 4. AI Integration Layer | 0/2 | Planning complete | - |
-| 5. AI Agents | 0/TBD | Not started | - |
+| 5. AI Agents | 0/2 | Planning complete | - |
