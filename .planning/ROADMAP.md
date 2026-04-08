@@ -80,7 +80,11 @@ Plans:
   2. User without an API key can make up to 5 free AI requests per day before being prompted to add a key
   3. AI responses are validated against schemas (no raw unstructured output reaches the UI)
   4. Runaway AI requests are stopped by iteration limits, token budgets, and circuit breakers
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 04-01-PLAN.md -- Backend AI proxy: multi-provider adapter (6 providers), Zod validation, freemium gate, cost guards, circuit breaker (TDD)
+- [ ] 04-02-PLAN.md -- Frontend AI hooks: useAIRequest, provider config in Einstellungen, AI response panel, BYOK integration
+**UI hint**: yes
 
 ### Phase 5: AI Agents
 **Goal**: Users can trigger specialized AI agents on their leads and deals to get instant qualification scores, market analysis, and SWOT assessments in German
@@ -106,5 +110,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Foundation & Infrastructure | 0/4 | Planning complete | - |
 | 2. CRM & Pipeline | 0/4 | Planning complete | - |
 | 3. Market Data | 0/2 | Planning complete | - |
-| 4. AI Integration Layer | 0/TBD | Not started | - |
+| 4. AI Integration Layer | 0/2 | Planning complete | - |
 | 5. AI Agents | 0/TBD | Not started | - |
