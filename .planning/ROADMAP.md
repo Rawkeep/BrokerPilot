@@ -4,6 +4,8 @@
 
 BrokerPilot delivers a KI-powered broker dashboard in five phases: first the infrastructure, persistence, and design system foundation; then the CRM with Kanban pipeline and lead management; then live market data integrations; then the BYOK AI proxy layer with safety controls; and finally the three AI agents (Lead Qualifier, Market Analyst, SWOT Strategist) that deliver the core differentiator. Each phase produces a demoable, verifiable increment.
 
+v2 extends the platform with LangGraph multi-agent orchestration (Phase 6) and productivity features — CSV export/import and PDF reports (Phase 7).
+
 ## Phases
 
 **Phase Numbering:**
@@ -17,6 +19,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 3: Market Data** - Live stock and crypto prices, server-side caching, financial charts
 - [ ] **Phase 4: AI Integration Layer** - BYOK multi-provider proxy, freemium gate, output validation, cost guards
 - [ ] **Phase 5: AI Agents** - Lead Qualifier, Market Analyst, SWOT Strategist with SSE streaming and German prompts
+- [ ] **Phase 6: LangGraph Multi-Agent Orchestration** - Supervisor pipeline (Qualifier -> Analyst -> SWOT), SSE streaming of intermediate results, partial failure recovery
+- [ ] **Phase 7: Productivity — CSV Export/Import + PDF Reports** - CSV import/export for leads, PDF report generation from AI analyses
 
 ## Phase Details
 
@@ -102,11 +106,41 @@ Plans:
 - [ ] 05-02-PLAN.md -- Frontend agent UI: trigger buttons, result cards, SSE streaming hook, SWOT matrix, agent history
 **UI hint**: yes
 
+### Phase 6: LangGraph Multi-Agent Orchestration
+**Goal**: Users can trigger a one-click Lead-to-Deal pipeline that orchestrates Qualifier, Analyst, and SWOT agents in sequence, streaming intermediate results and recovering from partial failures
+**Depends on**: Phase 5
+**Requirements**: ORCH-01, ORCH-02, ORCH-03
+**Success Criteria** (what must be TRUE):
+  1. User can trigger a full pipeline on any lead with one click, running Qualifier -> Analyst -> SWOT in sequence
+  2. Each agent step streams its result to the UI as it completes (not all at once at the end)
+  3. If one agent fails, the pipeline continues and the user sees results from successful agents plus clear error markers for failed ones
+  4. Pipeline respects freemium gate and circuit breaker controls
+**Plans:** 2 plans
+Plans:
+- [ ] 06-01-PLAN.md -- Backend LangGraph pipeline: sequential graph (Qualifier -> Analyst -> SWOT), state management, partial failure handling, SSE streaming endpoint (TDD)
+- [ ] 06-02-PLAN.md -- Frontend pipeline UI: trigger button, step-by-step progress stepper, intermediate results display, partial failure UI
+**UI hint**: yes
+
+### Phase 7: Productivity — CSV Export/Import + PDF Reports
+**Goal**: Users can export/import leads as CSV files for data portability and generate professional PDF reports from AI analyses
+**Depends on**: Phase 5
+**Requirements**: PROD-02, PROD-03
+**Success Criteria** (what must be TRUE):
+  1. User can export leads as CSV with broker-type-specific columns, semicolon delimiters, and German number/date formatting
+  2. User can import leads from a CSV file with column auto-detection, preview, and validation
+  3. User can download a formatted PDF report from any agent analysis result (Lead Qualifier, Market Analyst, SWOT Strategist)
+  4. All exports use German formatting (semicolons, comma decimals, DD.MM.YYYY dates)
+**Plans:** 2 plans
+Plans:
+- [ ] 07-01-PLAN.md -- CSV export/import services + PDF report generation service, all with German formatting (TDD)
+- [ ] 07-02-PLAN.md -- Frontend export/import UI: export button, import modal with preview/mapping, PDF download buttons on agent results
+**UI hint**: yes
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
-(Note: Phase 4 depends only on Phase 1; Phase 5 depends on both Phase 3 and Phase 4)
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
+(Note: Phase 4 depends only on Phase 1; Phase 5 depends on both Phase 3 and Phase 4; Phases 6 and 7 both depend on Phase 5 and can run in parallel)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -115,3 +149,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 3. Market Data | 0/2 | Planning complete | - |
 | 4. AI Integration Layer | 0/2 | Planning complete | - |
 | 5. AI Agents | 0/2 | Planning complete | - |
+| 6. LangGraph Multi-Agent Orchestration | 0/2 | Planning complete | - |
+| 7. Productivity — CSV + PDF | 0/2 | Planning complete | - |
