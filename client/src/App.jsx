@@ -8,6 +8,8 @@ import { LeadDetailPage } from './components/crm/LeadDetailPage.jsx';
 import { MarktPage } from './components/pages/MarktPage.jsx';
 import { AIAgentsPage } from './components/pages/AIAgentsPage.jsx';
 import { EinstellungenPage } from './components/pages/EinstellungenPage.jsx';
+import { AnalyticsPage } from './components/pages/AnalyticsPage.jsx';
+import { ClientPortal } from './components/portal/ClientPortal.jsx';
 import { useSettingsStore } from './stores/settingsStore';
 import { useAuthStore } from './stores/authStore.js';
 import { BROKER_TYPES } from '../../shared/brokerTypes.js';
@@ -31,6 +33,7 @@ function AppRoutes() {
         <Route path="/pipeline/:leadId" element={<LeadDetailPage />} />
         <Route path="/markt" element={<MarktPage />} />
         <Route path="/ai-agents" element={<AIAgentsPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/einstellungen" element={<EinstellungenPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -40,5 +43,10 @@ function AppRoutes() {
 }
 
 export default function App() {
-  return <AppRoutes />;
+  return (
+    <Routes>
+      <Route path="/portal/:token" element={<ClientPortal />} />
+      <Route path="/*" element={<AppRoutes />} />
+    </Routes>
+  );
 }

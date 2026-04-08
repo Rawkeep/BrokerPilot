@@ -10,6 +10,7 @@ const PATH_MAP = {
   pipeline: '/pipeline',
   markt: '/markt',
   'ai-agents': '/ai-agents',
+  analytics: '/analytics',
   einstellungen: '/einstellungen',
 };
 

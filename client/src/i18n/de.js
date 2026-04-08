@@ -8,6 +8,7 @@ export const de = {
     pipeline: 'Pipeline',
     markt: 'Markt',
     'ai-agents': 'KI-Agenten',
+    analytics: 'Analytics',
     einstellungen: 'Einstellungen',
   },
   settings: {

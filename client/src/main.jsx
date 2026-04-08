@@ -20,6 +20,9 @@ import './styles/pipeline.css';
 import './styles/export.css';
 import './styles/documents.css';
 import './styles/auth.css';
+import './styles/intelligence.css';
+import './styles/analytics.css';
+import './styles/portal.css';
 import App from './App.jsx';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
