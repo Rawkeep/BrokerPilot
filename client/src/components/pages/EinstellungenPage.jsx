@@ -1,6 +1,7 @@
 import { ThemeToggle } from '../settings/ThemeToggle.jsx';
 import { BrokerTypeSelector } from '../settings/BrokerTypeSelector.jsx';
 import { KeyManager } from '../settings/KeyManager.jsx';
+import { AIProviderConfig } from '../settings/AIProviderConfig.jsx';
 import { de } from '../../i18n/de.js';
 
 export function EinstellungenPage() {
@@ -18,6 +19,11 @@ export function EinstellungenPage() {
       <section className="settings-section">
         <h2 className="settings-section__title">{t.brokerType.title}</h2>
         <BrokerTypeSelector />
+      </section>
+
+      <section className="settings-section">
+        <h2 className="settings-section__title">{t.ai.title}</h2>
+        <AIProviderConfig />
       </section>
 
       <section className="settings-section">

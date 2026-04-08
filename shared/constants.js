@@ -8,3 +8,4 @@ export const MARKET_POLL_INTERVAL = 60 * 1000; // 60 seconds frontend polling
 export const CRYPTO_DEFAULT_CURRENCY = 'eur';
 export const CRYPTO_DEFAULT_PER_PAGE = 25;
 export const STOCK_CHART_RANGES = ['1d', '5d', '1mo', '3mo', '6mo', '1y'];
+export const AI_ROUTE_PREFIX = '/ai';
