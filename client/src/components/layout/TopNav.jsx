@@ -6,7 +6,7 @@ import { de } from '../../i18n/de.js';
 import { HamburgerMenu } from './HamburgerMenu.jsx';
 
 const PATH_MAP = {
-  dashboard: '/',
+  dashboard: '/dashboard',
   pipeline: '/pipeline',
   markt: '/markt',
   'ai-agents': '/ai-agents',
