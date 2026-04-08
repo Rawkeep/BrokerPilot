@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { GlassBadge } from '../ui/GlassBadge.jsx';
+import { PdfDownloadButton } from '../export/PdfDownloadButton.jsx';
 import { de } from '../../i18n/de.js';
 
 const KATEGORIE_COLORS = {
@@ -41,7 +42,7 @@ function getScoreTrackColor(score) {
  *
  * @param {{ result: object }} props
  */
-export function LeadQualifierResult({ result }) {
+export function LeadQualifierResult({ result, lead }) {
   if (!result) return null;
 
   const t = de.pages?.aiAgents?.results || {};
@@ -131,6 +132,9 @@ export function LeadQualifierResult({ result }) {
           <p className="agent-text agent-text--highlight">{result.naechsterSchritt}</p>
         </div>
       )}
+
+      {/* PDF Download */}
+      <PdfDownloadButton type="qualifier" lead={lead} result={result} />
     </div>
   );
 }

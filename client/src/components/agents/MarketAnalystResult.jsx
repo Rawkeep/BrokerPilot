@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { GlassBadge } from '../ui/GlassBadge.jsx';
+import { PdfDownloadButton } from '../export/PdfDownloadButton.jsx';
 import { de } from '../../i18n/de.js';
 
 const EMPFEHLUNG_COLORS = {
@@ -142,6 +143,9 @@ export function MarketAnalystResult({ result }) {
           </div>
         )}
       </div>
+
+      {/* PDF Download */}
+      <PdfDownloadButton type="analyst" result={result} />
     </div>
   );
 }

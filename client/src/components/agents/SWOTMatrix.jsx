@@ -1,3 +1,4 @@
+import { PdfDownloadButton } from '../export/PdfDownloadButton.jsx';
 import { de } from '../../i18n/de.js';
 
 /**
@@ -11,7 +12,7 @@ import { de } from '../../i18n/de.js';
  *
  * @param {{ result: object }} props
  */
-export function SWOTMatrix({ result }) {
+export function SWOTMatrix({ result, lead }) {
   if (!result) return null;
 
   const t = de.pages?.aiAgents?.results || {};
@@ -63,6 +64,9 @@ export function SWOTMatrix({ result }) {
           <p className="agent-text agent-text--highlight">{result.handlungsempfehlung}</p>
         </div>
       )}
+
+      {/* PDF Download */}
+      <PdfDownloadButton type="swot" lead={lead} result={result} />
     </div>
   );
 }

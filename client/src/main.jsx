@@ -16,6 +16,8 @@ import './styles/dashboard.css';
 import './styles/market.css';
 import './styles/ai.css';
 import './styles/agents.css';
+import './styles/pipeline.css';
+import './styles/export.css';
 import App from './App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

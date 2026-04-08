@@ -9,6 +9,7 @@ import { ActivityTimeline } from './ActivityTimeline.jsx';
 import { TagManager } from './TagManager.jsx';
 import { LeadForm } from './LeadForm.jsx';
 import { AgentTriggerPanel } from '../agents/AgentTriggerPanel.jsx';
+import { PipelineTrigger } from '../pipeline/PipelineTrigger.jsx';
 import { useLeadStore } from '../../stores/leadStore.js';
 import { useSettingsStore } from '../../stores/settingsStore.js';
 import { BROKER_TYPES } from '../../../../shared/brokerTypes.js';
@@ -192,6 +193,11 @@ export function LeadDetailPage() {
         {/* AI Agents section */}
         <GlassCard hoverable={false} className="lead-detail__agents">
           <AgentTriggerPanel lead={lead} />
+        </GlassCard>
+
+        {/* Pipeline section */}
+        <GlassCard hoverable={false} className="lead-detail__pipeline">
+          <PipelineTrigger lead={lead} />
         </GlassCard>
 
         {/* Right column: Activity timeline */}

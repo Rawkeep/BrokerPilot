@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Pipeline Components Styles
+   ========================================================================== */
+
+/* --- Pipeline Trigger --- */
+
+.pipeline-trigger {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pipeline-trigger__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.pipeline-trigger__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pipeline-trigger__button {
+  align-self: flex-start;
+}
+
+.pipeline-trigger__progress {
+  margin-top: var(--spacing-sm);
+}
+
+.pipeline-trigger__results {
+  margin-top: var(--spacing-md);
+}
+
+/* --- Pipeline Progress Stepper --- */
+
+.pipeline-progress {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: var(--spacing-md) 0;
+}
+
+.pipeline-progress__step-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.pipeline-progress__connector {
+  width: 32px;
+  height: 2px;
+  background: var(--color-border);
+  margin-top: 14px;
+  flex-shrink: 0;
+  transition: background var(--transition-base);
+}
+
+.pipeline-progress__connector--done {
+  background: var(--color-success);
+}
+
+.pipeline-progress__connector--active {
+  background: var(--color-accent);
+}
+
+.pipeline-progress__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 80px;
+  text-align: center;
+}
+
+.pipeline-progress__indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+}
+
+.pipeline-progress__step--running .pipeline-progress__indicator {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  animation: pipeline-pulse 1.5s ease-in-out infinite;
+}
+
+.pipeline-progress__step--done .pipeline-progress__indicator {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: #fff;
+}
+
+.pipeline-progress__step--error .pipeline-progress__indicator {
+  border-color: var(--color-error);
+  background: var(--color-error);
+  color: #fff;
+}
+
+.pipeline-progress__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-base);
+}
+
+.pipeline-progress__step--running .pipeline-progress__label {
+  color: var(--color-accent);
+}
+
+.pipeline-progress__step--done .pipeline-progress__label {
+  color: var(--color-success);
+}
+
+.pipeline-progress__step--error .pipeline-progress__label {
+  color: var(--color-error);
+}
+
+.pipeline-progress__preview {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipeline-progress__error-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipeline-progress__check,
+.pipeline-progress__error-icon {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.pipeline-progress__number {
+  font-size: var(--font-size-xs);
+}
+
+@keyframes pipeline-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+}
+
+/* --- Pipeline Results --- */
+
+.pipeline-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.pipeline-results__partial {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-sm);
+}
+
+.pipeline-results__partial-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.pipeline-results__card {
+  padding: var(--spacing-lg);
+}
+
+.pipeline-results__card--error {
+  border-left: 3px solid var(--color-error);
+}
+
+.pipeline-results__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.pipeline-results__card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.pipeline-results__error {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.pipeline-results__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .pipeline-progress {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pipeline-progress__step-wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .pipeline-progress__connector {
+    width: 2px;
+    height: 24px;
+    margin: 0 14px;
+  }
+
+  .pipeline-progress__step {
+    flex-direction: row;
+    text-align: left;
+  }
+}
