@@ -1,0 +1,701 @@
+/* ==========================================================================
+   Kanban Board Styles
+   ========================================================================== */
+
+/* --- Board Layout --- */
+.kanban-board {
+  display: flex;
+  gap: var(--spacing-md);
+  overflow-x: auto;
+  min-height: calc(100vh - 200px);
+  padding: var(--spacing-md) 0;
+  align-items: flex-start;
+}
+
+/* --- Column --- */
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  max-width: 320px;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  transition: border-color var(--transition-fast);
+}
+
+.kanban-column--over {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.kanban-column__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  position: sticky;
+  top: 0;
+}
+
+.kanban-column__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kanban-column__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+  min-height: 60px;
+}
+
+.kanban-column__empty {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--spacing-md) 0;
+}
+
+.kanban-column__footer {
+  margin-top: var(--spacing-sm);
+}
+
+/* --- Card --- */
+.kanban-card {
+  cursor: grab;
+  padding: var(--spacing-md);
+  margin-bottom: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  user-select: none;
+}
+
+.kanban-card:active {
+  cursor: grabbing;
+}
+
+.kanban-card--dragging {
+  opacity: 0.5;
+}
+
+.kanban-card--overlay {
+  transform: scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+  cursor: grabbing;
+}
+
+.kanban-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.kanban-card__name {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.kanban-card__company {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.kanban-card__value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  text-align: right;
+}
+
+.kanban-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: var(--spacing-xs);
+}
+
+.kanban-card__edit {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.kanban-card__edit:hover {
+  color: var(--color-accent);
+  background: var(--glass-bg);
+}
+
+/* --- Modal --- */
+.glass-modal {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 500px;
+  width: 90vw;
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+
+.glass-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.glass-modal__content {
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+}
+
+.glass-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+}
+
+.glass-modal__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.glass-modal__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.glass-modal__close:hover {
+  color: var(--color-text);
+}
+
+.glass-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* --- Badge --- */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.glass-badge--high {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: var(--color-error);
+}
+
+.glass-badge--medium {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: var(--color-warning);
+}
+
+.glass-badge--low {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: var(--color-success);
+}
+
+/* --- Select --- */
+.glass-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* --- Lead Form --- */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.lead-form__section-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.lead-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.lead-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* --- Pipeline Page --- */
+.pipeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.pipeline-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.pipeline-no-broker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  text-align: center;
+}
+
+/* --- Loading Skeleton --- */
+.kanban-skeleton {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+}
+
+.kanban-skeleton__column {
+  min-width: 280px;
+  height: 400px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  animation: kanban-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes kanban-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+/* --- Dark Theme Adjustments --- */
+[data-theme="dark"] .glass-modal__content {
+  background: var(--color-surface);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .glass-modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .kanban-card--overlay {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .glass-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* --- Kanban Card Link --- */
+.kanban-card__name--link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kanban-card__name--link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* --- Lead Detail Page --- */
+.lead-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lead-detail__nav {
+  margin-bottom: var(--spacing-md);
+}
+
+.lead-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .lead-detail__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lead-detail__info,
+.lead-detail__timeline {
+  padding: var(--spacing-lg);
+}
+
+.lead-detail__name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md);
+}
+
+.lead-detail__section {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--glass-border);
+}
+
+.lead-detail__section-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--spacing-sm);
+}
+
+.lead-detail__field {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--spacing-xs) 0;
+}
+
+.lead-detail__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.lead-detail__value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.lead-detail__value--accent {
+  color: var(--color-accent);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.lead-detail__badges {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.lead-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lead-detail__notes {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.lead-detail__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--glass-border);
+}
+
+.lead-detail__delete-btn {
+  color: var(--color-error) !important;
+}
+
+.lead-detail__note-input {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.lead-detail__note-input .glass-input-wrapper {
+  flex: 1;
+}
+
+/* --- Activity Timeline --- */
+.activity-timeline {
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.activity-timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--glass-border);
+}
+
+.activity-timeline__item {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+}
+
+.activity-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--spacing-lg) + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface);
+}
+
+.activity-timeline__icon {
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.activity-timeline__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.activity-timeline__type {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.activity-timeline__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  word-break: break-word;
+}
+
+.activity-timeline__time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.activity-timeline__empty {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+/* --- Lead Filters --- */
+.lead-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  margin-bottom: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.lead-filters__search {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.lead-filters__select {
+  min-width: 150px;
+}
+
+.lead-filters__dates {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.lead-filters__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  flex-basis: 100%;
+}
+
+.lead-filters__clear {
+  margin-left: auto;
+}
+
+.lead-filters__results-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* --- Glass Tag --- */
+.glass-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  cursor: default;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.glass-tag--active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--color-accent);
+}
+
+.glass-tag__label {
+  line-height: 1.4;
+}
+
+.glass-tag__remove {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.85em;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.glass-tag__remove:hover {
+  opacity: 1;
+}
+
+/* --- Tag Manager --- */
+.tag-manager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.tag-manager__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag-manager__input-wrapper {
+  position: relative;
+  max-width: 250px;
+}
+
+.tag-manager__suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.tag-manager__suggestion {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.tag-manager__suggestion:hover {
+  background: var(--glass-bg);
+}
+
+.tag-manager__max {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .kanban-column,
+  .kanban-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: none;
+  }
+
+  .kanban-card--overlay {
+    transform: none;
+  }
+
+  .kanban-skeleton__column {
+    animation: none;
+    opacity: 0.4;
+  }
+}

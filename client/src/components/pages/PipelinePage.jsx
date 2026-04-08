@@ -1,15 +1,43 @@
+import { Link } from 'react-router';
 import { GlassCard } from '../ui/GlassCard.jsx';
+import { GlassButton } from '../ui/GlassButton.jsx';
+import { KanbanBoard } from '../crm/KanbanBoard.jsx';
+import { useSettingsStore } from '../../stores/settingsStore.js';
+import { useLeadStore } from '../../stores/leadStore.js';
 import { de } from '../../i18n/de.js';
 
 export function PipelinePage() {
   const t = de.pages.pipeline;
+  const brokerType = useSettingsStore((s) => s.brokerType);
+  const leads = useLeadStore((s) => s.leads);
+  const leadCount = leads.filter((l) => l.brokerType === brokerType).length;
+
+  if (!brokerType) {
+    return (
+      <div>
+        <h1>{t.title}</h1>
+        <p className="page-subtitle">{t.subtitle}</p>
+        <div className="pipeline-no-broker">
+          <GlassCard hoverable={false}>
+            <p>{t.noBrokerType}</p>
+            <Link to="/einstellungen">
+              <GlassButton variant="primary">{t.selectBrokerType}</GlassButton>
+            </Link>
+          </GlassCard>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <h1>{t.title}</h1>
-      <p className="page-subtitle">{t.subtitle}</p>
-      <GlassCard hoverable={false}>
-        <p>{t.placeholder}</p>
-      </GlassCard>
+      <div className="pipeline-header">
+        <div className="pipeline-header__info">
+          <h1>{t.title}</h1>
+          <p className="page-subtitle">{t.subtitle} &mdash; {leadCount} {de.crm.leads} in der Pipeline</p>
+        </div>
+      </div>
+      <KanbanBoard />
     </div>
   );
 }

@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Dashboard — KPI Grid, Charts, Activity Feed
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   KPI Grid
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   KPI Card
+   -------------------------------------------------------------------------- */
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  min-height: 120px;
+  gap: var(--spacing-xs);
+}
+
+.kpi-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.kpi-card__title {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kpi-card__value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  line-height: 1.2;
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.kpi-card__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.kpi-card__trend {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.kpi-card__trend--up {
+  color: var(--color-success);
+}
+
+.kpi-card__trend--down {
+  color: var(--color-error);
+}
+
+.kpi-card__trend--neutral {
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard Charts — Two-Column Layout
+   -------------------------------------------------------------------------- */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section Titles & Empty States
+   -------------------------------------------------------------------------- */
+.dashboard-section__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.dashboard-section__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+   Pipeline Chart
+   -------------------------------------------------------------------------- */
+.pipeline-chart {
+  padding: var(--spacing-lg);
+}
+
+.pipeline-chart__tooltip {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--glass-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   Conversion Funnel
+   -------------------------------------------------------------------------- */
+.conversion-funnel {
+  padding: var(--spacing-lg);
+}
+
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.funnel__row {
+  display: grid;
+  grid-template-columns: 120px 1fr 40px 50px;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+@media (max-width: 600px) {
+  .funnel__row {
+    grid-template-columns: 80px 1fr 30px 40px;
+  }
+}
+
+.funnel__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.funnel__bar-track {
+  height: 24px;
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.funnel__bar {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition: width var(--transition-base);
+}
+
+.funnel__count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  text-align: right;
+}
+
+.funnel__pct {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   Activity Feed
+   -------------------------------------------------------------------------- */
+.activity-feed {
+  padding: var(--spacing-lg);
+}
+
+.activity-feed__list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activity-feed__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.activity-feed__item:last-child {
+  border-bottom: none;
+}
+
+.activity-feed__icon {
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.activity-feed__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-feed__lead-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+
+.activity-feed__lead-name:hover {
+  text-decoration: underline;
+}
+
+.activity-feed__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.activity-feed__time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Skeleton Loading
+   -------------------------------------------------------------------------- */
+.kpi-skeleton {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+}
+
+.kpi-skeleton__line {
+  height: 16px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--glass-bg) 25%,
+    var(--color-border) 50%,
+    var(--glass-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.kpi-skeleton__line--short {
+  width: 60%;
+}
+
+.kpi-skeleton__line--large {
+  height: 32px;
+  width: 80%;
+}
+
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   No Broker Type Prompt
+   -------------------------------------------------------------------------- */
+.dashboard-no-broker {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.dashboard-no-broker p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
