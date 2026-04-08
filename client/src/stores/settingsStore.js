@@ -16,12 +16,20 @@ export const useSettingsStore = create(
       theme: 'system',
       brokerType: null,
       language: 'de',
+      autoPilot: {
+        enabled: false,
+        autoReminder: true,
+        autoEmail: false,
+      },
 
       /** @param {'system' | 'light' | 'dark'} theme */
       setTheme: (theme) => set({ theme }),
 
       /** @param {string|null} type */
       setBrokerType: (type) => set({ brokerType: type }),
+
+      /** @param {object} config */
+      setAutoPilot: (config) => set({ autoPilot: config }),
     }),
     {
       name: 'bp-settings', // localStorage key

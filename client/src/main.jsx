@@ -18,6 +18,8 @@ import './styles/ai.css';
 import './styles/agents.css';
 import './styles/pipeline.css';
 import './styles/export.css';
+import './styles/documents.css';
+import './styles/auth.css';
 import App from './App.jsx';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';

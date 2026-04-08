@@ -9,6 +9,8 @@ import { marketRouter } from './routes/market.js';
 import { aiRouter } from './routes/ai.js';
 import { agentRouter } from './routes/agents.js';
 import { pipelineRouter } from './routes/pipeline.js';
+import { emailRouter } from './routes/email.js';
+import { notificationRouter } from './routes/notifications.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -63,6 +65,8 @@ app.use('/api', marketRouter);
 app.use('/api', aiRouter);
 app.use('/api', agentRouter);
 app.use('/api', pipelineRouter);
+app.use('/api', emailRouter);
+app.use('/api', notificationRouter);
 
 // --- Static Files ---
 

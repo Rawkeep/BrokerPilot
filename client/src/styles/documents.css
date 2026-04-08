@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Document Vault + AutoPilot Config Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Document Vault
+   -------------------------------------------------------------------------- */
+.document-vault {
+  padding: var(--spacing-lg);
+}
+
+.document-vault__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.document-vault__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.document-vault__upload {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.document-vault__category-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.document-vault__file-input {
+  display: none;
+}
+
+.document-vault__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.document-vault__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.document-vault__item:hover {
+  background: var(--color-surface-elevated);
+}
+
+.document-vault__icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.document-vault__item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.document-vault__item-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-vault__item-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.document-vault__item-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.document-vault__empty,
+.document-vault__loading {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* --------------------------------------------------------------------------
+   AutoPilot Config
+   -------------------------------------------------------------------------- */
+.autopilot-config {
+  padding: var(--spacing-lg);
+}
+
+.autopilot-config__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.autopilot-config__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+  line-height: 1.6;
+}
+
+.autopilot-config__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.autopilot-config__toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background var(--transition-base);
+  flex-wrap: wrap;
+}
+
+.autopilot-config__toggle:hover {
+  background: var(--color-surface-elevated);
+}
+
+.autopilot-config__toggle--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.autopilot-config__toggle input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.autopilot-config__toggle-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  flex: 1;
+  min-width: 200px;
+}
+
+.autopilot-config__toggle-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  width: 100%;
+  padding-left: 28px;
+}
+
+.autopilot-config__notifications {
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.autopilot-config__notifications h4 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.autopilot-config__notif-status {
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.autopilot-config__notif-status--active {
+  color: var(--color-success);
+}
+
+.autopilot-config__notif-status--denied {
+  color: var(--color-error);
+}
