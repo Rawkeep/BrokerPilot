@@ -1,0 +1,728 @@
+/* ==========================================================================
+   AI Agent Components Styles
+   ========================================================================== */
+
+/* --- Agent Trigger Panel --- */
+
+.agent-trigger-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.agent-trigger-panel__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.agent-trigger-panel__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: flex-end;
+}
+
+.agent-trigger-panel__market-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-end;
+}
+
+.agent-trigger-panel__symbol-input {
+  max-width: 180px;
+}
+
+.agent-trigger-panel__active {
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+}
+
+.agent-trigger-panel__error {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+}
+
+.agent-trigger-panel__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* --- Agent Trigger Button --- */
+
+.agent-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.agent-trigger-btn__icon {
+  font-size: var(--font-size-lg);
+}
+
+.agent-trigger-btn__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.agent-trigger-btn__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: agent-spin 0.8s linear infinite;
+}
+
+.agent-trigger-btn--streaming {
+  opacity: 0.85;
+  cursor: wait;
+}
+
+@keyframes agent-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Agent Stream Progress --- */
+
+.agent-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) 0;
+}
+
+.agent-progress__step {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.agent-progress__indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+}
+
+.agent-progress__step--active .agent-progress__indicator {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  animation: agent-pulse 1.5s ease-in-out infinite;
+}
+
+.agent-progress__step--completed .agent-progress__indicator {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: #fff;
+}
+
+.agent-progress__step--error .agent-progress__indicator {
+  border-color: var(--color-error);
+  background: var(--color-error);
+  color: #fff;
+}
+
+.agent-progress__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  transition: color var(--transition-base);
+}
+
+.agent-progress__step--active .agent-progress__label {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.agent-progress__step--completed .agent-progress__label {
+  color: var(--color-success);
+}
+
+.agent-progress__step--error .agent-progress__label {
+  color: var(--color-error);
+}
+
+.agent-progress__connector {
+  width: 24px;
+  height: 2px;
+  background: var(--color-border);
+  margin: 0 var(--spacing-xs);
+}
+
+.agent-progress__step--completed + .agent-progress__step .agent-progress__connector,
+.agent-progress__step--completed .agent-progress__connector {
+  background: var(--color-success);
+}
+
+.agent-progress__check,
+.agent-progress__error-icon {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.agent-progress__number {
+  font-size: var(--font-size-xs);
+}
+
+@keyframes agent-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+}
+
+/* --- Agent Result Card --- */
+
+.agent-result-card {
+  margin-bottom: var(--spacing-md);
+}
+
+.agent-result-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: var(--spacing-sm);
+}
+
+.agent-result-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.agent-result-card__agent-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.agent-result-card__timestamp {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.agent-result-card__chevron {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.agent-result-card__chevron--open {
+  transform: rotate(180deg);
+}
+
+.agent-result-card__progress {
+  padding: var(--spacing-sm) 0;
+}
+
+.agent-result-card__error {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.agent-result-card__body {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Shared Agent Result Styles --- */
+
+.agent-section-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.agent-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.agent-text--highlight {
+  background: var(--glass-bg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-accent);
+}
+
+/* --- Score Gauge (Lead Qualifier) --- */
+
+.agent-score-gauge {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.agent-score-gauge__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.agent-score-gauge__progress {
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.agent-score-gauge__value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Lead Qualifier Result --- */
+
+.lead-qualifier-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.lead-qualifier-result__score-section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.lead-qualifier-result__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.lead-qualifier-result__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.lead-qualifier-result__next-step {
+  margin-top: var(--spacing-sm);
+}
+
+/* Factor list */
+
+.agent-factor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.agent-factor {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-border);
+}
+
+.agent-factor--positiv {
+  border-left-color: var(--color-success);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.agent-factor--neutral {
+  border-left-color: var(--color-text-muted);
+  background: var(--glass-bg);
+}
+
+.agent-factor--negativ {
+  border-left-color: var(--color-error);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.agent-factor__name {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.agent-factor__details {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Action list */
+
+.agent-action-list {
+  padding-left: var(--spacing-lg);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.agent-action-list__item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --- Market Analyst Result --- */
+
+.market-analyst-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.market-analyst-result__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.market-analyst-result__asset {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.market-analyst-result__asset-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.market-analyst-result__symbol {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.market-analyst-result__badges {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.market-analyst-result__konfidenz {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Recommendation badge */
+
+.agent-recommendation-badge {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+/* Market data grid */
+
+.market-analyst-result__data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.market-analyst-result__data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.market-analyst-result__data-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.market-analyst-result__data-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.market-analyst-result__data-value--positive {
+  color: var(--color-success);
+}
+
+.market-analyst-result__data-value--negative {
+  color: var(--color-error);
+}
+
+.market-analyst-result__section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Two-column layout for Chancen / Risiken */
+
+.market-analyst-result__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 640px) {
+  .market-analyst-result__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.market-analyst-result__column {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+}
+
+.market-analyst-result__column--chancen {
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.market-analyst-result__column--risiken {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Bullet lists */
+
+.agent-bullet-list {
+  list-style: disc;
+  padding-left: var(--spacing-lg);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.agent-bullet-list li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.agent-bullet-list--green li::marker {
+  color: var(--color-success);
+}
+
+.agent-bullet-list--red li::marker {
+  color: var(--color-error);
+}
+
+/* --- SWOT Matrix --- */
+
+.swot-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.swot-result__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.swot-result__summary {
+  margin-bottom: var(--spacing-sm);
+}
+
+.swot-result__recommendation {
+  margin-top: var(--spacing-sm);
+}
+
+.swot-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+@media (max-width: 640px) {
+  .swot-matrix {
+    grid-template-columns: 1fr;
+  }
+}
+
+.swot-matrix__quadrant {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  min-height: 120px;
+}
+
+.swot-matrix__quadrant--blue {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.swot-matrix__quadrant--red {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.swot-matrix__quadrant--green {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.swot-matrix__quadrant--orange {
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.swot-matrix__quadrant-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--spacing-sm);
+}
+
+.swot-matrix__quadrant--blue .swot-matrix__quadrant-title { color: #3b82f6; }
+.swot-matrix__quadrant--red .swot-matrix__quadrant-title { color: #ef4444; }
+.swot-matrix__quadrant--green .swot-matrix__quadrant-title { color: #22c55e; }
+.swot-matrix__quadrant--orange .swot-matrix__quadrant-title { color: #f97316; }
+
+[data-theme="dark"] .swot-matrix__quadrant--blue .swot-matrix__quadrant-title { color: #60a5fa; }
+[data-theme="dark"] .swot-matrix__quadrant--red .swot-matrix__quadrant-title { color: #f87171; }
+[data-theme="dark"] .swot-matrix__quadrant--green .swot-matrix__quadrant-title { color: #4ade80; }
+[data-theme="dark"] .swot-matrix__quadrant--orange .swot-matrix__quadrant-title { color: #fb923c; }
+
+.swot-matrix__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.swot-matrix__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.swot-matrix__item-punkt {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.swot-matrix__item-details {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.swot-matrix__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* --- Agent History --- */
+
+.agent-history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.agent-history__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* --- Agent Cards (AIAgentsPage) --- */
+
+.agent-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.agent-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.agent-card__icon {
+  font-size: var(--font-size-2xl);
+}
+
+.agent-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.agent-card__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.agent-card__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.agent-card__select {
+  flex: 1;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+}
+
+.agent-card__input {
+  flex: 1;
+}

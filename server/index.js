@@ -7,6 +7,7 @@ import path from 'path';
 import { healthRouter } from './routes/health.js';
 import { marketRouter } from './routes/market.js';
 import { aiRouter } from './routes/ai.js';
+import { agentRouter } from './routes/agents.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -54,6 +55,7 @@ app.use('/api/', limiter);
 app.use('/api', healthRouter);
 app.use('/api', marketRouter);
 app.use('/api', aiRouter);
+app.use('/api', agentRouter);
 
 // --- Static Files ---
 

@@ -15,6 +15,7 @@ import './styles/kanban.css';
 import './styles/dashboard.css';
 import './styles/market.css';
 import './styles/ai.css';
+import './styles/agents.css';
 import App from './App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
