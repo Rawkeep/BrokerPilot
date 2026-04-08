@@ -71,3 +71,13 @@ export const AgentRunRequestSchema = z.object({
   model: z.string().min(1),
   apiKey: z.string().optional(),
 });
+
+// --- Pipeline Run Request Schema (ORCH-01) ---
+
+export const PipelineRunRequestSchema = z.object({
+  leadData: z.record(z.string(), z.unknown()),
+  brokerType: z.string().min(1),
+  provider: z.string().min(1),
+  model: z.string().min(1),
+  apiKey: z.string().optional(),
+});
