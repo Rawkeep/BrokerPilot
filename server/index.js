@@ -32,13 +32,18 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "blob:", "https://*.coingecko.com"],
       fontSrc: ["'self'"],
-      connectSrc: ["'self'"],
+      connectSrc: ["'self'", "https://*.up.railway.app"],
     },
   },
 }));
 
 app.use(cors({
-  origin: process.env.APP_URL || '*',
+  origin: process.env.APP_URL || [
+    'http://localhost:5173',
+    'http://localhost:5177',
+    'https://rawkeep.github.io',
+  ],
+  credentials: true,
 }));
 
 app.use(express.json());

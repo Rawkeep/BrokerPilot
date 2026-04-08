@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react';
 import { useAIStore } from '../stores/aiStore.js';
 import { useKeyStore } from '../stores/keyStore.js';
 import { useAgentStore } from '../stores/agentStore.js';
+import { API_BASE } from '../config.js';
 
 /**
  * useAgentStream — SSE streaming hook for AI agent execution.
@@ -54,7 +55,7 @@ export function useAgentStream() {
       abortRef.current = controller;
 
       try {
-        const response = await fetch('/api/agents/run', {
+        const response = await fetch(`${API_BASE}/api/agents/run`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

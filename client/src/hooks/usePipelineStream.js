@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useAIStore } from '../stores/aiStore.js';
 import { useKeyStore } from '../stores/keyStore.js';
+import { API_BASE } from '../config.js';
 
 /**
  * usePipelineStream — SSE streaming hook for the multi-agent pipeline.
@@ -59,7 +60,7 @@ export function usePipelineStream() {
       abortRef.current = controller;
 
       try {
-        const response = await fetch('/api/agents/pipeline', {
+        const response = await fetch(`${API_BASE}/api/agents/pipeline`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

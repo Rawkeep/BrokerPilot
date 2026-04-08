@@ -5,6 +5,7 @@
  * CRITICAL: API key is sent in the POST body (HTTPS-encrypted in transit),
  * never in URL parameters or query strings.
  */
+import { API_BASE } from '../config.js';
 
 /**
  * Send a chat request to the AI proxy.
@@ -20,7 +21,7 @@ export async function sendAIRequest(provider, model, messages, apiKey = null) {
     body.apiKey = apiKey;
   }
 
-  const res = await fetch('/api/ai/chat', {
+  const res = await fetch(`${API_BASE}/api/ai/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

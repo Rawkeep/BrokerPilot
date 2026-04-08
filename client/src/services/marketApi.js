@@ -2,13 +2,14 @@
  * Frontend API client for /api/market/* endpoints.
  * Each function fetches from the server-side proxy which caches upstream data.
  */
+import { API_BASE } from '../config.js';
 
 /**
  * Fetch stock overview (curated watchlist with indices & top stocks).
  * @returns {Promise<Array<object>>} Array of normalized quote objects
  */
 export async function fetchStockOverview() {
-  const res = await fetch('/api/market/stocks/overview');
+  const res = await fetch(`${API_BASE}/api/market/stocks/overview`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || res.statusText);
@@ -22,7 +23,7 @@ export async function fetchStockOverview() {
  * @returns {Promise<Array<object>>} Array of normalized quote objects
  */
 export async function fetchStockBatch(symbols) {
-  const res = await fetch('/api/market/stocks/batch', {
+  const res = await fetch(`${API_BASE}/api/market/stocks/batch`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ symbols }),
@@ -40,7 +41,7 @@ export async function fetchStockBatch(symbols) {
  * @returns {Promise<object>} Normalized quote object
  */
 export async function fetchStockQuote(symbol) {
-  const res = await fetch(`/api/market/stocks/${encodeURIComponent(symbol)}`);
+  const res = await fetch(`${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || res.statusText);
@@ -55,7 +56,7 @@ export async function fetchStockQuote(symbol) {
  * @returns {Promise<Array<{time: number, open: number, high: number, low: number, close: number}>>}
  */
 export async function fetchStockChart(symbol, range = '6mo') {
-  const res = await fetch(`/api/market/stocks/${encodeURIComponent(symbol)}/chart?range=${encodeURIComponent(range)}`);
+  const res = await fetch(`${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}/chart?range=${encodeURIComponent(range)}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || res.statusText);
@@ -66,11 +67,11 @@ export async function fetchStockChart(symbol, range = '6mo') {
 /**
  * Fetch top crypto market data.
  * @param {string} [currency='eur'] - Fiat currency for prices
- * @param {number} [perPage=25] - Number of coins
+ * @param {number} [perPage=100] - Number of coins
  * @returns {Promise<Array<object>>} Array of normalized coin objects
  */
 export async function fetchCryptoMarkets(currency = 'eur', perPage = 100) {
-  const res = await fetch(`/api/market/crypto?currency=${encodeURIComponent(currency)}&perPage=${perPage}`);
+  const res = await fetch(`${API_BASE}/api/market/crypto?currency=${encodeURIComponent(currency)}&perPage=${perPage}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || res.statusText);
@@ -86,7 +87,7 @@ export async function fetchCryptoMarkets(currency = 'eur', perPage = 100) {
  * @returns {Promise<Array<{time: number, open: number, high: number, low: number, close: number}>>}
  */
 export async function fetchCryptoChart(coinId, currency = 'eur', days = 30) {
-  const res = await fetch(`/api/market/crypto/${encodeURIComponent(coinId)}/chart?currency=${encodeURIComponent(currency)}&days=${days}`);
+  const res = await fetch(`${API_BASE}/api/market/crypto/${encodeURIComponent(coinId)}/chart?currency=${encodeURIComponent(currency)}&days=${days}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || res.statusText);
