@@ -48,7 +48,12 @@ Plans:
   3. User can drag-and-drop leads between pipeline stages on a visual Kanban board
   4. User can open a lead detail page showing the full activity timeline
   5. User can view a dashboard with KPIs: pipeline value, conversion rate, active deals, recent activity
-**Plans**: TBD
+**Plans:** 4 plans
+Plans:
+- [ ] 02-01-PLAN.md -- Data layer: broker type config extension, lead schema, leadStore with TDD
+- [ ] 02-02-PLAN.md -- Kanban pipeline: dnd-kit integration, KanbanBoard/Column/Card, LeadForm modal
+- [ ] 02-03-PLAN.md -- Lead detail page with activity timeline, search/filter UI, tag management
+- [ ] 02-04-PLAN.md -- Dashboard KPIs: KPI cards, pipeline chart, conversion funnel, activity feed
 **UI hint**: yes
 
 ### Phase 3: Market Data
@@ -96,7 +101,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Infrastructure | 0/4 | Planning complete | - |
-| 2. CRM & Pipeline | 0/TBD | Not started | - |
+| 2. CRM & Pipeline | 0/4 | Planning complete | - |
 | 3. Market Data | 0/TBD | Not started | - |
 | 4. AI Integration Layer | 0/TBD | Not started | - |
 | 5. AI Agents | 0/TBD | Not started | - |
