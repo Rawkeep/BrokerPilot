@@ -1,0 +1,407 @@
+/* ==========================================================================
+   Team Management — Multi-User / Team System
+   ========================================================================== */
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.team__header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.team__section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md);
+}
+
+/* ── Leaderboard ────────────────────────────────────────────── */
+.team__leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.team__leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.team__leaderboard-rank {
+  font-size: var(--font-size-xl);
+  min-width: 36px;
+  text-align: center;
+}
+
+.team__leaderboard-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.team__leaderboard-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.team__leaderboard-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.team__leaderboard-bar {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  margin-top: var(--spacing-sm);
+  overflow: hidden;
+}
+
+.team__leaderboard-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Avatar ─────────────────────────────────────────────────── */
+.team__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Team Members ───────────────────────────────────────────── */
+.team__members-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.team__member-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.team__member-card:hover {
+  background: var(--glass-bg);
+}
+
+.team__member-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+  min-width: 0;
+}
+
+.team__member-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team__member-leads {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.team__member-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.team__member-remove {
+  color: var(--color-error) !important;
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+}
+
+/* ── Role Badge ─────────────────────────────────────────────── */
+.team__role-badge {
+  display: inline-block;
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.team__role-badge--admin {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.team__role-badge--manager {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+
+.team__role-badge--agent {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+/* ── Activity Feed ──────────────────────────────────────────── */
+.team__activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* Timeline line */
+.team__activity-list::before {
+  content: '';
+  position: absolute;
+  left: 65px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.team__activity-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+}
+
+.team__activity-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 48px;
+  text-align: right;
+}
+
+.team__activity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 3px var(--color-surface);
+}
+
+.team__activity-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ── Modal ──────────────────────────────────────────────────── */
+.team__modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--spacing-md);
+}
+
+.team__modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  background: var(--color-surface);
+}
+
+.team__modal-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.team__modal-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.team__modal-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.team__modal-input:focus {
+  border-color: var(--color-accent);
+}
+
+.team__modal-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  padding-top: var(--spacing-sm);
+}
+
+/* ── Color Picker ───────────────────────────────────────────── */
+.team__color-picker {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xs);
+}
+
+.team__color-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  padding: 0;
+}
+
+.team__color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.team__color-swatch--active {
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 2px var(--color-bg);
+}
+
+/* ── Assigned Leads ─────────────────────────────────────────── */
+.team__assigned-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.team__assigned-empty {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.team__assigned-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.team__assigned-remove {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  padding: 0 var(--spacing-xs);
+  line-height: 1;
+}
+
+/* ── Team Assign Badge (inline) ─────────────────────────────── */
+.team-assign {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  cursor: default;
+}
+
+.team-assign--unassigned {
+  opacity: 0.5;
+}
+
+.team-assign__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.team-assign__initials {
+  line-height: 1;
+}
+
+/* ── Primary Button Variant ─────────────────────────────────── */
+.glass-button--primary {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.glass-button--primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .team__leaderboard-stats {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .team__member-card {
+    flex-wrap: wrap;
+  }
+
+  .team__member-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .team__member-info {
+    flex: 1 1 60%;
+  }
+}

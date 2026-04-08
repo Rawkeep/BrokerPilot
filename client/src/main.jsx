@@ -26,6 +26,9 @@ import './styles/portal.css';
 import './styles/scoring.css';
 import './styles/report.css';
 import './styles/email.css';
+import './styles/team.css';
+import './styles/campaigns.css';
+import './styles/calendar.css';
 import App from './App.jsx';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';

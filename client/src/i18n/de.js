@@ -9,6 +9,9 @@ export const de = {
     markt: 'Markt',
     'ai-agents': 'KI-Agenten',
     analytics: 'Analytics',
+    kalender: 'Kalender',
+    team: 'Team',
+    kampagnen: 'Kampagnen',
     einstellungen: 'Einstellungen',
   },
   settings: {

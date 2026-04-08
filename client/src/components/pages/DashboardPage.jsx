@@ -4,6 +4,7 @@ import { FollowUpWidget } from '../dashboard/FollowUpWidget.jsx';
 import { AutoReportWidget } from '../dashboard/AutoReportWidget.jsx';
 import { ReminderWidget } from '../dashboard/ReminderWidget.jsx';
 import { LeadScoringWidget } from '../dashboard/LeadScoringWidget.jsx';
+import { UpcomingWidget } from '../calendar/UpcomingWidget.jsx';
 
 export function DashboardPage() {
   const t = de.pages.dashboard;
@@ -17,6 +18,7 @@ export function DashboardPage() {
         <FollowUpWidget />
         <AutoReportWidget />
         <ReminderWidget />
+        <UpcomingWidget />
       </div>
     </div>
   );

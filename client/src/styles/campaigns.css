@@ -1,0 +1,505 @@
+/* ==========================================================================
+   Campaigns — Drip Campaign Management Styles
+   ========================================================================== */
+
+.campaigns {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.campaigns__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+}
+
+.campaigns__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.campaigns__loading,
+.campaigns__empty {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: var(--spacing-xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+   Campaign List
+   -------------------------------------------------------------------------- */
+
+.campaigns__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.campaigns__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.campaigns__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.campaigns__card-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.campaigns__card-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.campaigns__card-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.campaigns__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--transition-fast);
+}
+
+.campaigns__badge:hover {
+  opacity: 0.8;
+}
+
+.campaigns__badge--active {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+}
+
+.campaigns__badge--paused {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.campaigns__badge--completed {
+  background: rgba(156, 163, 175, 0.15);
+  color: var(--color-text-muted);
+}
+
+.campaigns__card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.campaigns__separator {
+  color: var(--color-text-muted);
+}
+
+.campaigns__card-trigger {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.campaigns__card-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Campaign Editor
+   -------------------------------------------------------------------------- */
+
+.campaigns__editor {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--glass-shadow);
+}
+
+.campaigns__editor-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-lg);
+}
+
+.campaigns__field {
+  margin-bottom: var(--spacing-md);
+}
+
+.campaigns__field label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.campaigns__field input[type="text"],
+.campaigns__field input[type="number"],
+.campaigns__field select,
+.campaigns__field textarea {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  transition: border-color var(--transition-fast);
+}
+
+.campaigns__field input:focus,
+.campaigns__field select:focus,
+.campaigns__field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.campaigns__field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.campaigns__field--toggle label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.campaigns__field--toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}
+
+.campaigns__editor-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Steps Builder — Timeline
+   -------------------------------------------------------------------------- */
+
+.campaigns__steps {
+  margin-top: var(--spacing-lg);
+}
+
+.campaigns__steps-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md);
+}
+
+.campaigns__steps-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+/* Connecting line */
+.campaigns__steps-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.campaigns__step {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  transition: box-shadow var(--transition-fast);
+}
+
+.campaigns__step:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.campaigns__step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.campaigns__step-number {
+  position: absolute;
+  left: -32px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  z-index: 1;
+}
+
+.campaigns__step-drag {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  cursor: grab;
+  user-select: none;
+  margin-right: var(--spacing-xs);
+}
+
+.campaigns__step-delay {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+}
+
+.campaigns__step-delay label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.campaigns__step-delay input {
+  width: 70px;
+  padding: 4px 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.campaigns__step-delay input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.campaigns__step-remove {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+  margin-left: auto;
+}
+
+.campaigns__step-remove:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.campaigns__step-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.campaigns__step-body .campaigns__field {
+  margin-bottom: 0;
+}
+
+.campaigns__add-step {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  font-family: var(--font-family);
+}
+
+.campaigns__add-step:hover {
+  border-color: var(--color-accent);
+  background: rgba(59, 130, 246, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   Enrollments Section
+   -------------------------------------------------------------------------- */
+
+.campaigns__enrollment-section {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.campaigns__enroll-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.campaigns__enroll-form select {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.campaigns__enrollments {
+  overflow-x: auto;
+}
+
+.campaigns__enrollment-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.campaigns__enrollment-table th {
+  text-align: left;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.campaigns__enrollment-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.campaigns__enrollment-table tr:last-child td {
+  border-bottom: none;
+}
+
+.campaigns__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.campaigns__status--active {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+}
+
+.campaigns__status--paused {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.campaigns__status--completed {
+  background: rgba(156, 163, 175, 0.15);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons — reuse .btn where defined, add campaign-specific small + danger
+   -------------------------------------------------------------------------- */
+
+.campaigns .btn--small {
+  padding: 4px 12px;
+  font-size: var(--font-size-xs);
+}
+
+.campaigns .btn--danger {
+  background: transparent;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background var(--transition-fast);
+}
+
+.campaigns .btn--danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .campaigns__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .campaigns__card-meta {
+    flex-wrap: wrap;
+  }
+
+  .campaigns__card-actions {
+    flex-direction: column;
+  }
+
+  .campaigns__card-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .campaigns__step-header {
+    flex-wrap: wrap;
+  }
+
+  .campaigns__enroll-form {
+    flex-direction: column;
+  }
+
+  .campaigns__enrollment-table {
+    font-size: var(--font-size-xs);
+  }
+
+  .campaigns__enrollment-table th,
+  .campaigns__enrollment-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}

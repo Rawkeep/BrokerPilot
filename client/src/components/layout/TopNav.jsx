@@ -11,6 +11,9 @@ const PATH_MAP = {
   markt: '/markt',
   'ai-agents': '/ai-agents',
   analytics: '/analytics',
+  kalender: '/kalender',
+  team: '/team',
+  kampagnen: '/kampagnen',
   einstellungen: '/einstellungen',
 };
 

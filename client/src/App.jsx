@@ -8,6 +8,9 @@ import { LeadDetailPage } from './components/crm/LeadDetailPage.jsx';
 import { MarktPage } from './components/pages/MarktPage.jsx';
 import { AIAgentsPage } from './components/pages/AIAgentsPage.jsx';
 import { EinstellungenPage } from './components/pages/EinstellungenPage.jsx';
+import { CampaignsPage } from './components/pages/CampaignsPage.jsx';
+import { CalendarPage } from './components/pages/CalendarPage.jsx';
+import { TeamPage } from './components/pages/TeamPage.jsx';
 import { AnalyticsPage } from './components/pages/AnalyticsPage.jsx';
 import { ClientPortal } from './components/portal/ClientPortal.jsx';
 import { useSettingsStore } from './stores/settingsStore';
@@ -34,6 +37,9 @@ function AppRoutes() {
         <Route path="/markt" element={<MarktPage />} />
         <Route path="/ai-agents" element={<AIAgentsPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/kalender" element={<CalendarPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/kampagnen" element={<CampaignsPage />} />
         <Route path="/einstellungen" element={<EinstellungenPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
