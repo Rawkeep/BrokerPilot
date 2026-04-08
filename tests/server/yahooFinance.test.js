@@ -1,19 +1,28 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Mock yahoo-finance2 before importing the service
+// Mock yahoo-finance2 v3 (class-based API)
+// vi.fn() calls inside the factory to avoid hoisting issues
 vi.mock('yahoo-finance2', () => {
   const mockQuote = vi.fn();
   const mockChart = vi.fn();
-  return {
-    default: {
-      quote: mockQuote,
-      chart: mockChart,
-    },
-  };
+  class YahooFinance {
+    constructor() {
+      this.quote = mockQuote;
+      this.chart = mockChart;
+    }
+  }
+  // Attach mock fns to class for test access
+  YahooFinance._mockQuote = mockQuote;
+  YahooFinance._mockChart = mockChart;
+  return { default: YahooFinance };
 });
 
-import yahooFinance from 'yahoo-finance2';
+import YahooFinance from 'yahoo-finance2';
 import { getQuote, getStockChart } from '../../server/services/yahooFinance.js';
+
+// Grab the mock functions from the class
+const mockQuote = YahooFinance._mockQuote;
+const mockChart = YahooFinance._mockChart;
 
 describe('yahooFinance service', () => {
   beforeEach(() => {
@@ -37,7 +46,7 @@ describe('yahooFinance service', () => {
     };
 
     it('returns normalized stock quote with expected fields', async () => {
-      yahooFinance.quote.mockResolvedValue(mockYahooResponse);
+      mockQuote.mockResolvedValue(mockYahooResponse);
 
       const result = await getQuote('AAPL');
 
@@ -57,7 +66,7 @@ describe('yahooFinance service', () => {
     });
 
     it('uses longName when shortName is missing', async () => {
-      yahooFinance.quote.mockResolvedValue({
+      mockQuote.mockResolvedValue({
         ...mockYahooResponse,
         shortName: undefined,
       });
@@ -67,14 +76,14 @@ describe('yahooFinance service', () => {
     });
 
     it('calls yahoo-finance2 quote with the provided symbol', async () => {
-      yahooFinance.quote.mockResolvedValue(mockYahooResponse);
+      mockQuote.mockResolvedValue(mockYahooResponse);
 
       await getQuote('MSFT');
-      expect(yahooFinance.quote).toHaveBeenCalledWith('MSFT');
+      expect(mockQuote).toHaveBeenCalledWith('MSFT');
     });
 
     it('propagates errors from yahoo-finance2', async () => {
-      yahooFinance.quote.mockRejectedValue(new Error('Symbol not found'));
+      mockQuote.mockRejectedValue(new Error('Symbol not found'));
 
       await expect(getQuote('INVALID')).rejects.toThrow('Symbol not found');
     });
@@ -90,7 +99,7 @@ describe('yahooFinance service', () => {
     };
 
     it('returns array of lightweight-charts OHLC objects with time in unix seconds', async () => {
-      yahooFinance.chart.mockResolvedValue(mockChartResponse);
+      mockChart.mockResolvedValue(mockChartResponse);
 
       const result = await getStockChart('AAPL', '6mo');
 
@@ -105,7 +114,7 @@ describe('yahooFinance service', () => {
     });
 
     it('filters out quotes with missing OHLC data', async () => {
-      yahooFinance.chart.mockResolvedValue({
+      mockChart.mockResolvedValue({
         quotes: [
           { date: new Date('2024-06-01T00:00:00Z'), open: 170, high: 175, low: 169, close: 174 },
           { date: new Date('2024-06-02T00:00:00Z'), open: null, high: null, low: null, close: null },
@@ -117,49 +126,49 @@ describe('yahooFinance service', () => {
     });
 
     it('maps range "1d" to interval "5m"', async () => {
-      yahooFinance.chart.mockResolvedValue({ quotes: [] });
+      mockChart.mockResolvedValue({ quotes: [] });
 
       await getStockChart('AAPL', '1d');
 
-      expect(yahooFinance.chart).toHaveBeenCalledWith(
+      expect(mockChart).toHaveBeenCalledWith(
         'AAPL',
         expect.objectContaining({ interval: '5m' }),
       );
     });
 
     it('maps range "5d" to interval "15m"', async () => {
-      yahooFinance.chart.mockResolvedValue({ quotes: [] });
+      mockChart.mockResolvedValue({ quotes: [] });
 
       await getStockChart('AAPL', '5d');
 
-      expect(yahooFinance.chart).toHaveBeenCalledWith(
+      expect(mockChart).toHaveBeenCalledWith(
         'AAPL',
         expect.objectContaining({ interval: '15m' }),
       );
     });
 
     it('maps other ranges to interval "1d"', async () => {
-      yahooFinance.chart.mockResolvedValue({ quotes: [] });
+      mockChart.mockResolvedValue({ quotes: [] });
 
       await getStockChart('AAPL', '6mo');
 
-      expect(yahooFinance.chart).toHaveBeenCalledWith(
+      expect(mockChart).toHaveBeenCalledWith(
         'AAPL',
         expect.objectContaining({ interval: '1d' }),
       );
     });
 
     it('passes period1 as a Date object', async () => {
-      yahooFinance.chart.mockResolvedValue({ quotes: [] });
+      mockChart.mockResolvedValue({ quotes: [] });
 
       await getStockChart('AAPL', '6mo');
 
-      const callArgs = yahooFinance.chart.mock.calls[0][1];
+      const callArgs = mockChart.mock.calls[0][1];
       expect(callArgs.period1).toBeInstanceOf(Date);
     });
 
     it('propagates errors from yahoo-finance2 chart', async () => {
-      yahooFinance.chart.mockRejectedValue(new Error('Chart data unavailable'));
+      mockChart.mockRejectedValue(new Error('Chart data unavailable'));
 
       await expect(getStockChart('INVALID', '6mo')).rejects.toThrow('Chart data unavailable');
     });
