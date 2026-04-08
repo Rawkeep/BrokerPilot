@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrokerPilot</title>
+    <!-- GitHub Pages SPA: restore path from 404.html redirect -->
+    <script>
+      (function(){
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+      // Capture redirect from 404.html query param hack
+      (function(){
+        var q = window.location.search;
+        if (q.length > 2 && q[1] === '/') {
+          var decoded = q.slice(2).split('&').map(function(s){ return s.replace(/~and~/g, '&'); }).join('?');
+          var path = window.location.pathname.replace(/\/$/, '') + '/' + decoded;
+          window.history.replaceState(null, null, path + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
