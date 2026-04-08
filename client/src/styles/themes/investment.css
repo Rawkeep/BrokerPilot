@@ -1,0 +1,11 @@
+/* Investment — Monochrome/neutral accent */
+[data-broker="investment"] {
+  --color-accent: #111827;
+  --color-accent-hover: #1f2937;
+  --color-accent-light: #6b7280;
+}
+
+[data-theme="dark"][data-broker="investment"] {
+  --color-accent: #e5e7eb;
+  --color-accent-hover: #f9fafb;
+}

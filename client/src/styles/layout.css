@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Layout — Reset, Container, Grid, Page Structure
+   Mobile-first responsive design
+   ========================================================================== */
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--spacing-md);
+}
+
+/* --- Grid --- */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid--cards {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid--cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid--cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid--cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Page Layout --- */
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  padding-block: var(--spacing-xl);
+}

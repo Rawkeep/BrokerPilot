@@ -1,0 +1,11 @@
+/* Krypto — Violet/purple accent */
+[data-broker="krypto"] {
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-accent-light: #a78bfa;
+}
+
+[data-theme="dark"][data-broker="krypto"] {
+  --color-accent: #a78bfa;
+  --glass-border: rgba(139, 92, 246, 0.15);
+}

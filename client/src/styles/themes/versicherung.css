@@ -1,0 +1,6 @@
+/* Versicherung (Insurance) — Trust blue accent */
+[data-broker="versicherung"] {
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-light: #93c5fd;
+}

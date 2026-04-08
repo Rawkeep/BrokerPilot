@@ -1,0 +1,6 @@
+/* Immobilien (Real Estate) — Warm amber accent */
+[data-broker="immobilien"] {
+  --color-accent: #d97706;
+  --color-accent-hover: #b45309;
+  --color-accent-light: #fbbf24;
+}
