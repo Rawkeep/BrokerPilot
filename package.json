@@ -1,0 +1,43 @@
+{
+  "name": "brokerpilot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "KI-gestuetztes Multi-Agent-Dashboard fuer Broker, Banker und Investoren im DACH-Raum.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "node server/index.js & vite --config vite.config.js",
+    "build": "vite build --config vite.config.js",
+    "start": "node server/index.js",
+    "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.6",
+    "date-fns": "^4.1.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "helmet": "^8.1.0",
+    "idb": "^8.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^7.14.0",
+    "uuid": "^13.0.0",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.0",
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^29.0.2",
+    "vite": "^8.0.7",
+    "vitest": "^4.1.3"
+  }
+}
