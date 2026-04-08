@@ -69,19 +69,19 @@ export function KPIGrid() {
           title={de.crm.kpis.pipelineValue}
           value={kpis.pipelineValue}
           format="currency"
-          icon="\ud83d\udcb0"
+          icon="💰"
         />
         <KPICard
           title={de.crm.kpis.conversionRate}
           value={kpis.conversionRate}
           format="percent"
-          icon="\ud83c\udfaf"
+          icon="🎯"
         />
         <KPICard
           title={de.crm.kpis.activeDeals}
           value={kpis.activeDeals}
           format="number"
-          icon="\ud83d\udcc8"
+          icon="📈"
         />
       </div>
 

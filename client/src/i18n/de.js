@@ -179,7 +179,7 @@ export const de = {
     dealValue: 'Deal-Wert',
     budget: 'Budget',
     notes: 'Notizen',
-    tags: 'Tags',
+    tagsLabel: 'Tags',
     priority: 'Priorität',
     priorities: { low: 'Niedrig', medium: 'Mittel', high: 'Hoch' },
     stage: 'Phase',

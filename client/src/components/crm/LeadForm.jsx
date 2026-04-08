@@ -228,7 +228,7 @@ export function LeadForm({ open, onClose, lead, brokerType, defaultStage }) {
         )}
 
         <GlassInput
-          label={de.crm.tags}
+          label={de.crm.tagsLabel}
           name="tags"
           value={formData.tags}
           onChange={handleChange}

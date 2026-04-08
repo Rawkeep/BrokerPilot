@@ -156,7 +156,7 @@ export function LeadDetailPage() {
 
           {/* Tags */}
           <div className="lead-detail__section">
-            <h3 className="lead-detail__section-title">{de.crm.tags}</h3>
+            <h3 className="lead-detail__section-title">{de.crm.tagsLabel}</h3>
             {lead.tags?.length > 0 && (
               <div className="lead-detail__tags">
                 {lead.tags.map((tag) => (
