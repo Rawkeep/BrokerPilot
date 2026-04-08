@@ -13,6 +13,7 @@ import './styles/themes/versicherung.css';
 import './styles/themes/investment.css';
 import './styles/kanban.css';
 import './styles/dashboard.css';
+import './styles/market.css';
 import App from './App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

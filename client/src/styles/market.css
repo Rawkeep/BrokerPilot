@@ -1,0 +1,253 @@
+/* ============================================================
+   Market Page Styles
+   ============================================================ */
+
+.market-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Tab Bar --- */
+
+.market-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.market-tab {
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.15));
+  border-radius: 0.5rem;
+  background: var(--glass-bg, rgba(255, 255, 255, 0.06));
+  color: var(--color-text-secondary, #94a3b8);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.market-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary, #f1f5f9);
+}
+
+.market-tab.active {
+  background: var(--color-accent, #3b82f6);
+  color: #fff;
+  border-color: var(--color-accent, #3b82f6);
+}
+
+/* --- Stock Search --- */
+
+.stock-search {
+  margin-bottom: 1.5rem;
+}
+
+.stock-search__row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.stock-search__row .glass-input-wrapper {
+  flex: 1;
+}
+
+.stock-search__hint {
+  margin-top: 0.375rem;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary, #94a3b8);
+}
+
+/* --- Stock Quote Card --- */
+
+.stock-quote-card {
+  margin-bottom: 1.5rem;
+}
+
+.stock-quote-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.stock-quote-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text-primary, #f1f5f9);
+}
+
+.stock-quote-name {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary, #94a3b8);
+}
+
+.stock-quote-price {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.stock-quote-price__value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #f1f5f9);
+}
+
+.stock-quote-price__change {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.stock-quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stock-quote-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stock-quote-field__label {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stock-quote-field__value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary, #f1f5f9);
+}
+
+/* --- Crypto Table --- */
+
+.crypto-table-card {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.crypto-table-wrapper {
+  overflow-x: auto;
+}
+
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.crypto-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-secondary, #94a3b8);
+  border-bottom: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+}
+
+.crypto-table td {
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary, #f1f5f9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.crypto-table__row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.crypto-table__row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.crypto-table__name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.crypto-table__coin-image {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --- Chart --- */
+
+.chart-container {
+  width: 100%;
+  min-height: 200px;
+}
+
+.chart-range-buttons {
+  display: flex;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --- Price Colors --- */
+
+.price-positive {
+  color: #22c55e;
+}
+
+.price-negative {
+  color: #ef4444;
+}
+
+/* --- Loading & Error States --- */
+
+.market-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-secondary, #94a3b8);
+  font-size: 0.95rem;
+}
+
+.market-error {
+  text-align: center;
+  padding: 2rem;
+  color: #ef4444;
+  font-size: 0.95rem;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 640px) {
+  .stock-search__row {
+    flex-direction: column;
+  }
+
+  .stock-quote-price {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stock-quote-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .crypto-table {
+    font-size: 0.8rem;
+  }
+
+  .crypto-table th,
+  .crypto-table td {
+    padding: 0.5rem 0.625rem;
+  }
+}

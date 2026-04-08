@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { healthRouter } from './routes/health.js';
+import { marketRouter } from './routes/market.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -26,7 +27,7 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "blob:"],
+      imgSrc: ["'self'", "data:", "blob:", "https://*.coingecko.com"],
       fontSrc: ["'self'"],
       connectSrc: ["'self'"],
     },
@@ -50,6 +51,7 @@ app.use('/api/', limiter);
 // --- API Routes ---
 
 app.use('/api', healthRouter);
+app.use('/api', marketRouter);
 
 // --- Static Files ---
 

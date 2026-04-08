@@ -4,3 +4,7 @@ export const CACHE_DEFAULT_TTL = 5 * 60 * 1000; // 5 minutes
 export const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
 export const RATE_LIMIT_MAX = 100;
 export const PORT = 3000;
+export const MARKET_POLL_INTERVAL = 60 * 1000; // 60 seconds frontend polling
+export const CRYPTO_DEFAULT_CURRENCY = 'eur';
+export const CRYPTO_DEFAULT_PER_PAGE = 25;
+export const STOCK_CHART_RANGES = ['1d', '5d', '1mo', '3mo', '6mo', '1y'];
