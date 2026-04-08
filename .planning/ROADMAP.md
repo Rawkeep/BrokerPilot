@@ -65,7 +65,10 @@ Plans:
   2. User can view live crypto prices, market cap, and 24h changes for top coins
   3. User can view candlestick and line charts for stock and crypto data
   4. Market data loads within seconds and is visibly cached (subsequent requests within 5 minutes return instantly)
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 03-01-PLAN.md -- Server-side API routes: Yahoo Finance + CoinGecko proxy with cache, data normalization, TDD
+- [ ] 03-02-PLAN.md -- MarktPage UI: tabbed Aktien/Krypto layout, stock search, crypto table, lightweight-charts integration
 **UI hint**: yes
 
 ### Phase 4: AI Integration Layer
@@ -102,6 +105,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Infrastructure | 0/4 | Planning complete | - |
 | 2. CRM & Pipeline | 0/4 | Planning complete | - |
-| 3. Market Data | 0/TBD | Not started | - |
+| 3. Market Data | 0/2 | Planning complete | - |
 | 4. AI Integration Layer | 0/TBD | Not started | - |
 | 5. AI Agents | 0/TBD | Not started | - |
