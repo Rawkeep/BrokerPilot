@@ -14,6 +14,7 @@ import { notificationRouter } from './routes/notifications.js';
 import { intelligenceRouter } from './routes/intelligence.js';
 import { portalRouter } from './routes/portal.js';
 import { pluginRouter } from './routes/plugins.js';
+import { emailTemplateRouter } from './routes/emailTemplates.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -73,6 +74,7 @@ app.use('/api', notificationRouter);
 app.use('/api', intelligenceRouter);
 app.use('/api', portalRouter);
 app.use('/api', pluginRouter);
+app.use('/api', emailTemplateRouter);
 
 // --- Static Files ---
 

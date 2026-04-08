@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Lead Scoring — Widget & Badge Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LeadScoringWidget
+   -------------------------------------------------------------------------- */
+.lead-scoring {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.lead-scoring__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.lead-scoring__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Tier badges row */
+.lead-scoring__tiers {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.lead-scoring__tier-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+.lead-scoring__tier-badge--hot {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-error);
+}
+
+.lead-scoring__tier-badge--warm {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.lead-scoring__tier-badge--cold {
+  background: rgba(156, 163, 175, 0.15);
+  color: var(--color-text-muted);
+}
+
+/* Lead list */
+.lead-scoring__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.lead-scoring__list-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.lead-scoring__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.lead-scoring__item:hover {
+  background: var(--glass-border);
+  border-color: var(--color-accent);
+}
+
+.lead-scoring__item-emoji {
+  grid-row: 1 / 3;
+  font-size: var(--font-size-base);
+  line-height: 1;
+}
+
+.lead-scoring__item-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lead-scoring__item-score {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.lead-scoring__item-stage {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Score bar inside each item */
+.lead-scoring__score-bar {
+  grid-column: 2 / -1;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.lead-scoring__score-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+/* Distribution section */
+.lead-scoring__distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.lead-scoring__distribution-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.lead-scoring__distribution-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.lead-scoring__distribution-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.lead-scoring__distribution-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.lead-scoring__distribution-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   LeadScoreBadge (inline on Kanban cards)
+   -------------------------------------------------------------------------- */
+.lead-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-full);
+  line-height: 1.4;
+}
+
+.lead-score-badge__dot {
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.lead-score-badge__value {
+  letter-spacing: 0.02em;
+}
+
+.lead-score-badge--hot {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--color-error);
+}
+
+.lead-score-badge--warm {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--color-warning);
+}
+
+.lead-score-badge--cold {
+  background: rgba(156, 163, 175, 0.12);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive: Stack on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .lead-scoring__item {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .lead-scoring__item-stage {
+    grid-column: 2 / -1;
+  }
+
+  .lead-scoring__score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .lead-scoring__tiers {
+    gap: var(--spacing-xs);
+  }
+
+  .lead-scoring__tier-badge {
+    font-size: var(--font-size-xs);
+    padding: 2px var(--spacing-sm);
+  }
+}

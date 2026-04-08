@@ -3,6 +3,7 @@ import { KPIGrid } from '../dashboard/KPIGrid.jsx';
 import { FollowUpWidget } from '../dashboard/FollowUpWidget.jsx';
 import { AutoReportWidget } from '../dashboard/AutoReportWidget.jsx';
 import { ReminderWidget } from '../dashboard/ReminderWidget.jsx';
+import { LeadScoringWidget } from '../dashboard/LeadScoringWidget.jsx';
 
 export function DashboardPage() {
   const t = de.pages.dashboard;
@@ -12,6 +13,7 @@ export function DashboardPage() {
       <p className="page-subtitle">{t.subtitle}</p>
       <KPIGrid />
       <div className="dashboard-widgets">
+        <LeadScoringWidget />
         <FollowUpWidget />
         <AutoReportWidget />
         <ReminderWidget />

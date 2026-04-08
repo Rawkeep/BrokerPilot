@@ -23,6 +23,9 @@ import './styles/auth.css';
 import './styles/intelligence.css';
 import './styles/analytics.css';
 import './styles/portal.css';
+import './styles/scoring.css';
+import './styles/report.css';
+import './styles/email.css';
 import App from './App.jsx';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
