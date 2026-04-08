@@ -38,7 +38,7 @@ export async function fetchStockChart(symbol, range = '6mo') {
  * @param {number} [perPage=25] - Number of coins
  * @returns {Promise<Array<object>>} Array of normalized coin objects
  */
-export async function fetchCryptoMarkets(currency = 'eur', perPage = 25) {
+export async function fetchCryptoMarkets(currency = 'eur', perPage = 100) {
   const res = await fetch(`/api/market/crypto?currency=${encodeURIComponent(currency)}&perPage=${perPage}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));

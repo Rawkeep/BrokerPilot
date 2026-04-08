@@ -60,7 +60,7 @@ marketRouter.get('/market/stocks/:symbol', async (req, res) => {
  */
 marketRouter.get('/market/crypto', async (req, res) => {
   const currency = req.query.currency || 'eur';
-  const perPage = parseInt(req.query.perPage, 10) || 25;
+  const perPage = parseInt(req.query.perPage, 10) || 100;
   const cacheKey = `crypto:markets:${currency}:${perPage}`;
 
   const cached = cache.get(cacheKey);

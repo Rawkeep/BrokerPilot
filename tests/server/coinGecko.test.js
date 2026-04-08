@@ -44,7 +44,7 @@ describe('coinGecko service', () => {
         json: () => Promise.resolve(mockCoinGeckoResponse),
       });
 
-      const result = await getCryptoMarkets('eur', 25);
+      const result = await getCryptoMarkets('eur', 100);
 
       expect(result).toHaveLength(2);
       expect(result[0]).toEqual({
@@ -71,7 +71,7 @@ describe('coinGecko service', () => {
       expect(result[1].symbol).toBe('ETH');
     });
 
-    it('uses default parameters (eur, 25)', async () => {
+    it('uses default parameters (eur, 100)', async () => {
       globalThis.fetch.mockResolvedValue({
         ok: true,
         json: () => Promise.resolve([]),
@@ -81,7 +81,7 @@ describe('coinGecko service', () => {
 
       const calledUrl = globalThis.fetch.mock.calls[0][0];
       expect(calledUrl).toContain('vs_currency=eur');
-      expect(calledUrl).toContain('per_page=25');
+      expect(calledUrl).toContain('per_page=100');
     });
 
     it('passes custom parameters', async () => {

@@ -1,4 +1,6 @@
+import { useState, useMemo } from 'react';
 import { GlassCard } from '../ui/GlassCard.jsx';
+import { GlassInput } from '../ui/GlassInput.jsx';
 import { de } from '../../i18n/de.js';
 
 /**
@@ -20,7 +22,7 @@ function formatLargeNumber(value) {
 }
 
 /**
- * Crypto market overview table.
+ * Crypto market overview table with search/filter.
  *
  * @param {object} props
  * @param {Array} props.coins - Array of normalized coin objects
@@ -30,6 +32,17 @@ function formatLargeNumber(value) {
  */
 export function CryptoTable({ coins, loading, error, onSelectCoin }) {
   const t = de.pages.markt.crypto;
+  const [search, setSearch] = useState('');
+
+  // Client-side filtering by name or symbol
+  const filteredCoins = useMemo(() => {
+    if (!coins) return [];
+    if (!search.trim()) return coins;
+    const q = search.trim().toLowerCase();
+    return coins.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.symbol.toLowerCase().includes(q)
+    );
+  }, [coins, search]);
 
   if (loading && !coins) {
     return (
@@ -51,6 +64,19 @@ export function CryptoTable({ coins, loading, error, onSelectCoin }) {
 
   return (
     <GlassCard hoverable={false} className="crypto-table-card">
+      {/* Search Input */}
+      <div className="crypto-search">
+        <GlassInput
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t.searchPlaceholder || 'Krypto suchen (Name oder Symbol)...'}
+          aria-label="Krypto suchen"
+        />
+        <span className="crypto-search__count">
+          {filteredCoins.length} / {coins.length}
+        </span>
+      </div>
+
       <div className="crypto-table-wrapper">
         <table className="crypto-table">
           <thead>
@@ -64,48 +90,56 @@ export function CryptoTable({ coins, loading, error, onSelectCoin }) {
             </tr>
           </thead>
           <tbody>
-            {coins.map((coin) => {
-              const isPositive = (coin.change24h ?? 0) >= 0;
-              const changeClass = isPositive ? 'price-positive' : 'price-negative';
-              const changeSign = isPositive ? '+' : '';
+            {filteredCoins.length === 0 ? (
+              <tr>
+                <td colSpan="6" className="crypto-table__no-results">
+                  Keine Ergebnisse für &ldquo;{search}&rdquo;
+                </td>
+              </tr>
+            ) : (
+              filteredCoins.map((coin) => {
+                const isPositive = (coin.change24h ?? 0) >= 0;
+                const changeClass = isPositive ? 'price-positive' : 'price-negative';
+                const changeSign = isPositive ? '+' : '';
 
-              return (
-                <tr
-                  key={coin.id}
-                  className="crypto-table__row"
-                  onClick={() => onSelectCoin(coin.id)}
-                  title={t.selectCoin}
-                >
-                  <td>{coin.rank}</td>
-                  <td className="crypto-table__name-cell">
-                    {coin.image && (
-                      <img
-                        src={coin.image}
-                        alt={coin.name}
-                        className="crypto-table__coin-image"
-                        width="24"
-                        height="24"
-                        loading="lazy"
-                      />
-                    )}
-                    <span>{coin.name}</span>
-                  </td>
-                  <td>{coin.symbol}</td>
-                  <td className="text-right">{formatEur(coin.price)}</td>
-                  <td className={`text-right ${changeClass}`}>
-                    {changeSign}
-                    {coin.change24h != null
-                      ? new Intl.NumberFormat('de-DE', {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        }).format(coin.change24h)
-                      : '-'}
-                    %
-                  </td>
-                  <td className="text-right">{formatLargeNumber(coin.marketCap)}</td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr
+                    key={coin.id}
+                    className="crypto-table__row"
+                    onClick={() => onSelectCoin(coin.id)}
+                    title={t.selectCoin}
+                  >
+                    <td>{coin.rank}</td>
+                    <td className="crypto-table__name-cell">
+                      {coin.image && (
+                        <img
+                          src={coin.image}
+                          alt={coin.name}
+                          className="crypto-table__coin-image"
+                          width="24"
+                          height="24"
+                          loading="lazy"
+                        />
+                      )}
+                      <span>{coin.name}</span>
+                    </td>
+                    <td>{coin.symbol}</td>
+                    <td className="text-right">{formatEur(coin.price)}</td>
+                    <td className={`text-right ${changeClass}`}>
+                      {changeSign}
+                      {coin.change24h != null
+                        ? new Intl.NumberFormat('de-DE', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          }).format(coin.change24h)
+                        : '-'}
+                      %
+                    </td>
+                    <td className="text-right">{formatLargeNumber(coin.marketCap)}</td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>

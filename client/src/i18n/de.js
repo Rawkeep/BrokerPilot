@@ -96,6 +96,7 @@ export const de = {
         change24h: '24h',
         marketCap: 'Marktkapitalisierung',
         selectCoin: 'Klicken fuer Chart',
+        searchPlaceholder: 'Krypto suchen (Name oder Symbol)...',
       },
       chart: {
         title: 'Chart',

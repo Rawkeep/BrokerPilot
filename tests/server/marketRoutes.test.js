@@ -212,7 +212,7 @@ describe('market routes', () => {
 
       await fetch(`${baseUrl}/api/market/crypto`);
 
-      expect(mockGetCryptoMarkets).toHaveBeenCalledWith('eur', 25);
+      expect(mockGetCryptoMarkets).toHaveBeenCalledWith('eur', 100);
     });
 
     it('passes custom query parameters', async () => {
@@ -228,7 +228,7 @@ describe('market routes', () => {
 
       await fetch(`${baseUrl}/api/market/crypto`);
 
-      expect(mockCache.set).toHaveBeenCalledWith('crypto:markets:eur:25', mockMarkets);
+      expect(mockCache.set).toHaveBeenCalledWith('crypto:markets:eur:100', mockMarkets);
     });
 
     it('returns cached data without calling service again', async () => {

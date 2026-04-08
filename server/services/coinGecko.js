@@ -19,7 +19,7 @@ function getHeaders() {
  * @param {number} [perPage=25] - Number of coins to return
  * @returns {Promise<Array<object>>} Normalized array of coin objects
  */
-export async function getCryptoMarkets(vsCurrency = 'eur', perPage = 25) {
+export async function getCryptoMarkets(vsCurrency = 'eur', perPage = 100) {
   const url = `${BASE_URL}/coins/markets?vs_currency=${vsCurrency}&order=market_cap_desc&per_page=${perPage}&page=1&sparkline=false&price_change_percentage=24h`;
 
   const res = await fetch(url, { headers: getHeaders() });
