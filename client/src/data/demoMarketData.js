@@ -26,16 +26,21 @@ export const DEMO_STOCK_OVERVIEW = [
 
 // --- Crypto Markets ---
 export const DEMO_CRYPTO_MARKETS = [
-  { id: 'bitcoin', symbol: 'BTC', name: 'Bitcoin', price: 82456.78, change24h: 2.34, marketCap: 1620000000000, volume24h: 34500000000, image: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png' },
-  { id: 'ethereum', symbol: 'ETH', name: 'Ethereum', price: 3245.67, change24h: 1.87, marketCap: 390000000000, volume24h: 18700000000, image: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png' },
-  { id: 'binancecoin', symbol: 'BNB', name: 'BNB', price: 612.34, change24h: -0.45, marketCap: 89000000000, volume24h: 2100000000, image: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
-  { id: 'solana', symbol: 'SOL', name: 'Solana', price: 178.92, change24h: 4.56, marketCap: 82000000000, volume24h: 4500000000, image: 'https://assets.coingecko.com/coins/images/4128/small/solana.png' },
-  { id: 'ripple', symbol: 'XRP', name: 'XRP', price: 2.34, change24h: -1.23, marketCap: 134000000000, volume24h: 8900000000, image: 'https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png' },
-  { id: 'cardano', symbol: 'ADA', name: 'Cardano', price: 0.78, change24h: 3.21, marketCap: 27000000000, volume24h: 890000000, image: 'https://assets.coingecko.com/coins/images/975/small/cardano.png' },
-  { id: 'dogecoin', symbol: 'DOGE', name: 'Dogecoin', price: 0.21, change24h: 5.67, marketCap: 31000000000, volume24h: 2300000000, image: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png' },
-  { id: 'polkadot', symbol: 'DOT', name: 'Polkadot', price: 8.45, change24h: -2.34, marketCap: 11500000000, volume24h: 450000000, image: 'https://assets.coingecko.com/coins/images/12171/small/polkadot.png' },
-  { id: 'avalanche-2', symbol: 'AVAX', name: 'Avalanche', price: 42.67, change24h: 1.89, marketCap: 17000000000, volume24h: 780000000, image: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png' },
-  { id: 'chainlink', symbol: 'LINK', name: 'Chainlink', price: 18.92, change24h: 2.45, marketCap: 12000000000, volume24h: 670000000, image: 'https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png' },
+  { id: 'bitcoin', rank: 1, symbol: 'BTC', name: 'Bitcoin', price: 82456.78, change24h: 2.34, marketCap: 1620000000000, volume24h: 34500000000, image: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png' },
+  { id: 'ethereum', rank: 2, symbol: 'ETH', name: 'Ethereum', price: 3245.67, change24h: 1.87, marketCap: 390000000000, volume24h: 18700000000, image: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png' },
+  { id: 'ripple', rank: 3, symbol: 'XRP', name: 'XRP', price: 2.34, change24h: -1.23, marketCap: 134000000000, volume24h: 8900000000, image: 'https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png' },
+  { id: 'binancecoin', rank: 4, symbol: 'BNB', name: 'BNB', price: 612.34, change24h: -0.45, marketCap: 89000000000, volume24h: 2100000000, image: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
+  { id: 'solana', rank: 5, symbol: 'SOL', name: 'Solana', price: 178.92, change24h: 4.56, marketCap: 82000000000, volume24h: 4500000000, image: 'https://assets.coingecko.com/coins/images/4128/small/solana.png' },
+  { id: 'cardano', rank: 6, symbol: 'ADA', name: 'Cardano', price: 0.78, change24h: 3.21, marketCap: 27000000000, volume24h: 890000000, image: 'https://assets.coingecko.com/coins/images/975/small/cardano.png' },
+  { id: 'dogecoin', rank: 7, symbol: 'DOGE', name: 'Dogecoin', price: 0.21, change24h: 5.67, marketCap: 31000000000, volume24h: 2300000000, image: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png' },
+  { id: 'polkadot', rank: 8, symbol: 'DOT', name: 'Polkadot', price: 8.45, change24h: -2.34, marketCap: 11500000000, volume24h: 450000000, image: 'https://assets.coingecko.com/coins/images/12171/small/polkadot.png' },
+  { id: 'avalanche-2', rank: 9, symbol: 'AVAX', name: 'Avalanche', price: 42.67, change24h: 1.89, marketCap: 17000000000, volume24h: 780000000, image: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png' },
+  { id: 'chainlink', rank: 10, symbol: 'LINK', name: 'Chainlink', price: 18.92, change24h: 2.45, marketCap: 12000000000, volume24h: 670000000, image: 'https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png' },
+  { id: 'tron', rank: 11, symbol: 'TRX', name: 'TRON', price: 0.26, change24h: 1.12, marketCap: 22000000000, volume24h: 1100000000, image: 'https://assets.coingecko.com/coins/images/1094/small/tron-logo.png' },
+  { id: 'litecoin', rank: 12, symbol: 'LTC', name: 'Litecoin', price: 98.45, change24h: -0.87, marketCap: 7400000000, volume24h: 560000000, image: 'https://assets.coingecko.com/coins/images/2/small/litecoin.png' },
+  { id: 'uniswap', rank: 13, symbol: 'UNI', name: 'Uniswap', price: 14.23, change24h: 3.45, marketCap: 8500000000, volume24h: 340000000, image: 'https://assets.coingecko.com/coins/images/12504/small/uniswap-logo.png' },
+  { id: 'stellar', rank: 14, symbol: 'XLM', name: 'Stellar', price: 0.41, change24h: 0.78, marketCap: 12300000000, volume24h: 290000000, image: 'https://assets.coingecko.com/coins/images/100/small/Stellar_symbol_black_RGB.png' },
+  { id: 'near', rank: 15, symbol: 'NEAR', name: 'NEAR Protocol', price: 7.89, change24h: 2.67, marketCap: 9200000000, volume24h: 410000000, image: 'https://assets.coingecko.com/coins/images/10365/small/near.jpg' },
 ];
 
 // --- Generate OHLC chart data ---
