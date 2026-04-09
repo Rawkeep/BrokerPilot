@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { generateDailyReport, detectAlerts, getTrendAnalysis } from '../services/marketIntelligence.js';
+import { generateDailyReport, detectAlerts, analyzeTrend } from '../services/marketIntelligence.js';
 
 export const intelligenceRouter = Router();
 
@@ -26,7 +26,7 @@ intelligenceRouter.get('/intelligence/trends', async (req, res, next) => {
   try {
     const { symbol } = req.query;
     if (!symbol) return res.status(400).json({ error: 'symbol required' });
-    const trend = await getTrendAnalysis(symbol);
+    const trend = await analyzeTrend(symbol);
     if (!trend) return res.status(404).json({ error: 'Symbol not found' });
     res.json(trend);
   } catch (err) { next(err); }
