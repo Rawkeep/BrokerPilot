@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { captureError } from '../lib/sentry.js';
 
 export class ErrorBoundary extends Component {
   state = { hasError: false, error: null };
@@ -8,8 +9,7 @@ export class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('BrokerPilot Error:', error, errorInfo);
-    // Could send to error tracking service in the future
+    captureError(error, { componentStack: errorInfo.componentStack });
   }
 
   handleReset = () => {

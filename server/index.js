@@ -1,4 +1,5 @@
 import express from 'express';
+import { initServerSentry, setupSentryErrorHandler } from './lib/sentry.js';
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
@@ -27,6 +28,9 @@ const app = express();
 const PORT = process.env.PORT || DEFAULT_PORT;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+// Sentry — must be initialized before other middleware
+initServerSentry(app);
+
 // Shared cache instance for market data (exported for use by future routes)
 export const cache = createCacheMiddleware();
 
@@ -40,7 +44,7 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "blob:", "https://*.coingecko.com", "https://api.coingecko.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      connectSrc: ["'self'", "https://*.up.railway.app", "https://*.supabase.co", "https://api.coingecko.com", "https://query1.finance.yahoo.com", "https://query2.finance.yahoo.com", "https://*.stripe.com"],
+      connectSrc: ["'self'", "https://*.up.railway.app", "https://*.supabase.co", "https://api.coingecko.com", "https://query1.finance.yahoo.com", "https://query2.finance.yahoo.com", "https://*.stripe.com", "https://*.sentry.io", "https://*.ingest.sentry.io"],
       frameSrc: ["'self'", "https://*.stripe.com"],
       objectSrc: ["'none'"],
       baseUri: ["'self'"],
@@ -109,6 +113,9 @@ app.get('/{*path}', (_req, res) => {
 });
 
 // --- Error Handler ---
+
+// Sentry error handler — must be before the generic error handler
+setupSentryErrorHandler(app);
 
 app.use((err, _req, res, _next) => {
   const status = err.status || 500;

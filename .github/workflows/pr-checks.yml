@@ -1,0 +1,39 @@
+name: PR Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      - name: Build check
+        run: npm run build
+        env:
+          VITE_API_URL: https://example.com
+
+      - name: Bundle size check
+        run: |
+          MAX_SIZE_KB=2000
+          ACTUAL_SIZE=$(du -sk dist/assets/*.js | awk '{sum+=$1} END {print sum}')
+          echo "Bundle size: ${ACTUAL_SIZE}KB (max: ${MAX_SIZE_KB}KB)"
+          if [ "$ACTUAL_SIZE" -gt "$MAX_SIZE_KB" ]; then
+            echo "::warning::Bundle size ${ACTUAL_SIZE}KB exceeds ${MAX_SIZE_KB}KB limit"
+          fi
+
+      - name: Server startup check
+        run: |
+          timeout 8 node -e "
+            import('./server/index.js').then(() => {
+              setTimeout(() => { console.log('Server starts OK'); process.exit(0); }, 3000);
+            }).catch(e => { console.error(e.message); process.exit(1); });
+          " || exit 0

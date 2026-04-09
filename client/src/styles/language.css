@@ -1,0 +1,35 @@
+.lang-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.lang-selector__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--text-primary, #1f2937);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.lang-selector__option:hover {
+  border-color: var(--amber-500, #f59e0b);
+}
+
+.lang-selector__option--active {
+  background: var(--amber-500, #f59e0b);
+  border-color: var(--amber-500, #f59e0b);
+  color: #fff;
+  font-weight: 600;
+}
+
+.lang-selector__flag {
+  font-size: 1.125rem;
+  line-height: 1;
+}

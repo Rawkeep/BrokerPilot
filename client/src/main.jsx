@@ -1,3 +1,7 @@
+import { initSentry } from './lib/sentry.js';
+
+initSentry();
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
@@ -36,6 +40,8 @@ import './styles/bulk.css';
 import './styles/error.css';
 import './styles/landing.css';
 import './styles/billing.css';
+import './styles/health.css';
+import './styles/language.css';
 import './styles/mobile.css';
 import App from './App.jsx';
 

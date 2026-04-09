@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { BROKER_TYPES } from '../../../../shared/brokerTypes.js';
-import { de } from '../../i18n/de.js';
+import { t, useLanguage } from '../../i18n/index.js';
 import { HamburgerMenu } from './HamburgerMenu.jsx';
 import { NotificationCenter } from './NotificationCenter.jsx';
 
@@ -21,13 +21,14 @@ const PATH_MAP = {
 
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { language } = useLanguage(); // triggers re-render on language change
   const brokerType = useSettingsStore((s) => s.brokerType);
   const navOrder =
     BROKER_TYPES[brokerType]?.navOrder || ['dashboard', 'pipeline', 'markt', 'ai-agents', 'einstellungen'];
 
   return (
     <nav className="top-nav">
-      <span className="top-nav__brand">{de.app.name}</span>
+      <span className="top-nav__brand">{t('app.name')}</span>
 
       <div className="top-nav__tabs">
         {navOrder.map((tabId) => (
@@ -39,7 +40,7 @@ export function TopNav() {
             }
             end={tabId === 'dashboard'}
           >
-            {de.nav[tabId] || tabId}
+            {t('nav.' + tabId) || tabId}
           </NavLink>
         ))}
       </div>

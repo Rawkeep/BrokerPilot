@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Health Dashboard — System Status Monitor
+   ========================================================================== */
+
+.health {
+  margin-top: var(--spacing-lg);
+}
+
+.health__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md);
+}
+
+.health__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.health__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.health__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.health__status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.health__status--ok {
+  color: var(--color-success);
+}
+
+.health__status--error {
+  color: var(--color-error);
+}
+
+.health__status--inactive {
+  color: var(--color-text-muted);
+}
+
+/* --- Status Dot --- */
+
+.health__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.health__dot--ok {
+  background: var(--color-success);
+  animation: health-pulse 2s ease-in-out infinite;
+}
+
+.health__dot--error {
+  background: var(--color-error);
+}
+
+.health__dot--inactive {
+  background: var(--color-text-muted);
+}
+
+@keyframes health-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* --- Footer --- */
+
+.health__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--glass-border);
+}
+
+.health__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
