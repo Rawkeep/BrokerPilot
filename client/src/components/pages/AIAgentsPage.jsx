@@ -210,3 +210,5 @@ export function AIAgentsPage() {
     </div>
   );
 }
+
+export default AIAgentsPage;

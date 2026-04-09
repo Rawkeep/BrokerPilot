@@ -163,3 +163,5 @@ export function MarktPage() {
     </div>
   );
 }
+
+export default MarktPage;

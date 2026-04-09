@@ -9,3 +9,5 @@ export function WorkflowPage() {
     </div>
   );
 }
+
+export default WorkflowPage;

@@ -230,3 +230,5 @@ export function LeadDetailPage() {
     </div>
   );
 }
+
+export default LeadDetailPage;

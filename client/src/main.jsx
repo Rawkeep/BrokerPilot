@@ -33,6 +33,8 @@ import './styles/workflows.css';
 import './styles/onboarding.css';
 import './styles/notifications.css';
 import './styles/bulk.css';
+import './styles/error.css';
+import './styles/landing.css';
 import './styles/mobile.css';
 import App from './App.jsx';
 

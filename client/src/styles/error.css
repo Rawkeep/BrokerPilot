@@ -1,0 +1,91 @@
+/* Error Boundary */
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  background: var(--color-bg, #0f172a);
+}
+.error-boundary__card {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: var(--glass-bg, rgba(30,41,59,0.5));
+  border: 1px solid var(--color-border, #334155);
+  border-radius: var(--radius-md, 12px);
+  max-width: 480px;
+}
+.error-boundary__icon { font-size: 3rem; margin-bottom: var(--spacing-md); }
+.error-boundary__title {
+  font-size: var(--font-size-lg, 1.25rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text, #e2e8f0);
+  margin: 0 0 var(--spacing-sm);
+}
+.error-boundary__message {
+  color: var(--color-text-secondary, #94a3b8);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-md);
+}
+.error-boundary__details {
+  text-align: left;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-muted, #64748b);
+  font-size: var(--font-size-xs, 0.75rem);
+}
+.error-boundary__details pre {
+  background: rgba(0,0,0,0.3);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.error-boundary__actions { display: flex; gap: var(--spacing-sm); justify-content: center; }
+.error-boundary__btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm, 8px);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s;
+}
+.error-boundary__btn--primary {
+  background: var(--color-accent, #f59e0b);
+  color: #0f172a;
+  border-color: var(--color-accent);
+  font-weight: 600;
+}
+.error-boundary__btn--primary:hover { opacity: 0.9; }
+.error-boundary__btn--secondary {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+.error-boundary__btn--secondary:hover {
+  background: rgba(148,163,184,0.1);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl, 3rem);
+  min-height: 200px;
+}
+.loading-spinner__ring {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border, #334155);
+  border-top-color: var(--color-accent, #f59e0b);
+  border-radius: 50%;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+.loading-spinner__text {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-muted, #64748b);
+  font-size: var(--font-size-sm);
+}
+@keyframes spinner-rotate { to { transform: rotate(360deg); } }
