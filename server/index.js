@@ -16,6 +16,7 @@ import { portalRouter } from './routes/portal.js';
 import { pluginRouter } from './routes/plugins.js';
 import { emailTemplateRouter } from './routes/emailTemplates.js';
 import { campaignRouter } from './routes/campaigns.js';
+import { billingRouter, webhookHandler } from './routes/billing.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -39,8 +40,8 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "blob:", "https://*.coingecko.com", "https://api.coingecko.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      connectSrc: ["'self'", "https://*.up.railway.app", "https://*.supabase.co", "https://api.coingecko.com", "https://query1.finance.yahoo.com", "https://query2.finance.yahoo.com"],
-      frameSrc: ["'none'"],
+      connectSrc: ["'self'", "https://*.up.railway.app", "https://*.supabase.co", "https://api.coingecko.com", "https://query1.finance.yahoo.com", "https://query2.finance.yahoo.com", "https://*.stripe.com"],
+      frameSrc: ["'self'", "https://*.stripe.com"],
       objectSrc: ["'none'"],
       baseUri: ["'self'"],
       formAction: ["'self'"],
@@ -67,6 +68,9 @@ app.use(cors({
   credentials: true,
 }));
 
+// Stripe webhook needs raw body — mount BEFORE express.json()
+app.post('/api/billing/webhook', express.raw({ type: 'application/json' }), webhookHandler);
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 
@@ -92,6 +96,7 @@ app.use('/api', portalRouter);
 app.use('/api', pluginRouter);
 app.use('/api', emailTemplateRouter);
 app.use('/api', campaignRouter);
+app.use('/api', billingRouter);
 
 // --- Static Files ---
 

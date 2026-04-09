@@ -35,6 +35,7 @@ import './styles/notifications.css';
 import './styles/bulk.css';
 import './styles/error.css';
 import './styles/landing.css';
+import './styles/billing.css';
 import './styles/mobile.css';
 import App from './App.jsx';
 

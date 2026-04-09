@@ -1,0 +1,266 @@
+/* ==========================================================================
+   Billing — Subscription management
+   ========================================================================== */
+
+.billing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* --- Demo mode badge --- */
+
+.billing__demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--color-warning);
+  border-radius: var(--radius-sm);
+  color: var(--color-warning);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* --- Messages --- */
+
+.billing__message {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.billing__message--success {
+  background: color-mix(in srgb, var(--color-success) 12%, transparent);
+  color: var(--color-success);
+  border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+}
+
+.billing__message--error {
+  background: color-mix(in srgb, var(--color-error) 12%, transparent);
+  color: var(--color-error);
+  border: 1px solid color-mix(in srgb, var(--color-error) 30%, transparent);
+}
+
+.billing__message--info {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* --- Current plan --- */
+
+.billing__current {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.billing__current strong {
+  color: var(--color-text);
+}
+
+/* --- Plan cards grid --- */
+
+.billing__plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  align-items: stretch;
+}
+
+.billing__plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.billing__plan-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Active plan */
+.billing__plan-card--active {
+  border-color: var(--color-warning);
+  box-shadow: 0 0 0 1px var(--color-warning), var(--glass-shadow);
+}
+
+/* Popular plan — slightly larger with glow */
+.billing__plan-card--popular {
+  transform: scale(1.03);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 20%, transparent), var(--glass-shadow);
+}
+
+.billing__plan-card--popular:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--color-accent) 30%, transparent), 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Popular badge */
+.billing__popular-badge {
+  position: absolute;
+  top: calc(-1 * var(--spacing-sm) - 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px var(--spacing-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Plan content --- */
+
+.billing__plan-name {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.billing__plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+}
+
+.billing__price-amount {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.billing__price-note {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* --- Features list --- */
+
+.billing__plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.billing__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.billing__feature-check {
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+/* --- Buttons --- */
+
+.billing__btn {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+  background: var(--color-warning);
+  color: #fff;
+}
+
+.billing__btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-warning) 85%, #000);
+}
+
+.billing__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.billing__btn--current {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-secondary);
+}
+
+.billing__btn--current:hover:not(:disabled) {
+  background: var(--glass-bg);
+}
+
+/* Manage billing link */
+
+.billing__manage-link {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  padding: var(--spacing-sm) 0;
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.billing__manage-link:hover:not(:disabled) {
+  color: var(--color-accent-hover);
+}
+
+.billing__manage-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Responsive: stack on mobile --- */
+
+@media (max-width: 768px) {
+  .billing__plans {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .billing__plan-card--popular {
+    transform: none;
+  }
+
+  .billing__plan-card--popular:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Dark mode adjustments --- */
+
+[data-theme="dark"] .billing__plan-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.32);
+}
+
+[data-theme="dark"] .billing__plan-card--popular {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 15%, transparent), var(--glass-shadow);
+}
+
+[data-theme="dark"] .billing__plan-card--popular:hover {
+  box-shadow: 0 0 32px color-mix(in srgb, var(--color-accent) 20%, transparent), 0 12px 40px rgba(0, 0, 0, 0.32);
+}

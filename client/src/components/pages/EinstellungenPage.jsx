@@ -3,6 +3,7 @@ import { BrokerTypeSelector } from '../settings/BrokerTypeSelector.jsx';
 import { KeyManager } from '../settings/KeyManager.jsx';
 import { AIProviderConfig } from '../settings/AIProviderConfig.jsx';
 import { AutoPilotConfig } from '../settings/AutoPilotConfig.jsx';
+import { BillingPage } from '../billing/BillingPage.jsx';
 import { de } from '../../i18n/de.js';
 
 export function EinstellungenPage() {
@@ -35,6 +36,11 @@ export function EinstellungenPage() {
       <section className="settings-section">
         <h2 className="settings-section__title">Automatisierung</h2>
         <AutoPilotConfig />
+      </section>
+
+      <section className="settings-section">
+        <h2 className="settings-section__title">Abonnement</h2>
+        <BillingPage />
       </section>
     </div>
   );

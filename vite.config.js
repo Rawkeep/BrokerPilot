@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   root: 'client',
-  base: process.env.VITE_API_URL ? '/BrokerPilot/' : '/',
+  base: process.env.VITE_CUSTOM_DOMAIN ? '/' : (process.env.VITE_API_URL ? '/BrokerPilot/' : '/'),
   build: {
     outDir: '../dist',
     emptyOutDir: true,
