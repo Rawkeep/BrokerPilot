@@ -6,6 +6,7 @@ import { StockQuoteCard } from '../market/StockQuoteCard.jsx';
 import { StockOverview } from '../market/StockOverview.jsx';
 import { CryptoTable } from '../market/CryptoTable.jsx';
 import { PriceChart } from '../market/PriceChart.jsx';
+import { MarketIntelligence } from '../market/MarketIntelligence.jsx';
 import { useMarketData } from '../../hooks/useMarketData.js';
 import {
   fetchStockOverview,
@@ -68,6 +69,9 @@ export function MarktPage() {
     <div className="market-page">
       <h1>{t.title}</h1>
       <p className="page-subtitle">{t.subtitle}</p>
+
+      {/* Market Intelligence Summary */}
+      <MarketIntelligence />
 
       {/* Tab bar */}
       <div className="market-tabs">

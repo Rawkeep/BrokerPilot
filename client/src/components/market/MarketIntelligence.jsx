@@ -3,6 +3,7 @@ import { GlassCard } from '../ui/GlassCard.jsx';
 import { GlassBadge } from '../ui/GlassBadge.jsx';
 import { API_BASE } from '../../config.js';
 import { useSettingsStore } from '../../stores/settingsStore.js';
+import { DEMO_INTELLIGENCE_REPORT } from '../../data/demoMarketData.js';
 
 const SENTIMENT_MAP = { positiv: '📈', negativ: '📉', seitwaerts: '➡️', bullish: '📈', bearish: '📉', neutral: '➡️' };
 const SEVERITY_MAP = { critical: 'high', warning: 'medium', info: 'low' };
@@ -25,8 +26,10 @@ export function MarketIntelligence() {
       if (!res.ok) throw new Error('Fehler');
       setReport(await res.json());
       setError(null);
-    } catch (e) {
-      setError(e.message);
+    } catch {
+      // Fallback to demo data when backend unavailable
+      setReport(DEMO_INTELLIGENCE_REPORT);
+      setError(null);
     } finally {
       setLoading(false);
     }

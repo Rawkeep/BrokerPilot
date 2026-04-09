@@ -1,96 +1,86 @@
 /**
  * Frontend API client for /api/market/* endpoints.
- * Each function fetches from the server-side proxy which caches upstream data.
+ * Falls back to demo data when backend is unavailable (e.g. GitHub Pages).
  */
 import { API_BASE } from '../config.js';
+import {
+  DEMO_STOCK_OVERVIEW,
+  DEMO_CRYPTO_MARKETS,
+  getDemoStockChart,
+  getDemoCryptoChart,
+} from '../data/demoMarketData.js';
+
+/** Try to fetch from API, return null on failure */
+async function tryFetch(url, options) {
+  try {
+    const res = await fetch(url, options);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Fetch stock overview (curated watchlist with indices & top stocks).
- * @returns {Promise<Array<object>>} Array of normalized quote objects
  */
 export async function fetchStockOverview() {
-  const res = await fetch(`${API_BASE}/api/market/stocks/overview`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  const data = await tryFetch(`${API_BASE}/api/market/stocks/overview`);
+  return data || DEMO_STOCK_OVERVIEW;
 }
 
 /**
  * Fetch quotes for a custom list of symbols (watchlist).
- * @param {string[]} symbols - Array of stock ticker symbols
- * @returns {Promise<Array<object>>} Array of normalized quote objects
  */
 export async function fetchStockBatch(symbols) {
-  const res = await fetch(`${API_BASE}/api/market/stocks/batch`, {
+  const data = await tryFetch(`${API_BASE}/api/market/stocks/batch`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ symbols }),
   });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  if (data) return data;
+  // Fallback: filter demo data by symbols
+  return DEMO_STOCK_OVERVIEW.filter((s) => symbols.includes(s.symbol));
 }
 
 /**
  * Fetch a stock quote by ticker symbol.
- * @param {string} symbol - Stock ticker (e.g., "AAPL", "SAP.DE")
- * @returns {Promise<object>} Normalized quote object
  */
 export async function fetchStockQuote(symbol) {
-  const res = await fetch(`${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  const data = await tryFetch(`${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}`);
+  if (data) return data;
+  // Fallback: find in demo data or generate
+  const match = DEMO_STOCK_OVERVIEW.find((s) => s.symbol === symbol);
+  if (match) return match;
+  return { symbol, name: symbol, price: 100, change: 1.23, changePercent: 1.23, currency: 'EUR' };
 }
 
 /**
  * Fetch historical OHLC chart data for a stock.
- * @param {string} symbol - Stock ticker
- * @param {string} [range='6mo'] - Time range: '1d', '5d', '1mo', '3mo', '6mo', '1y'
- * @returns {Promise<Array<{time: number, open: number, high: number, low: number, close: number}>>}
  */
 export async function fetchStockChart(symbol, range = '6mo') {
-  const res = await fetch(`${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}/chart?range=${encodeURIComponent(range)}`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  const data = await tryFetch(
+    `${API_BASE}/api/market/stocks/${encodeURIComponent(symbol)}/chart?range=${encodeURIComponent(range)}`
+  );
+  return data || getDemoStockChart(symbol, range);
 }
 
 /**
  * Fetch top crypto market data.
- * @param {string} [currency='eur'] - Fiat currency for prices
- * @param {number} [perPage=100] - Number of coins
- * @returns {Promise<Array<object>>} Array of normalized coin objects
  */
 export async function fetchCryptoMarkets(currency = 'eur', perPage = 100) {
-  const res = await fetch(`${API_BASE}/api/market/crypto?currency=${encodeURIComponent(currency)}&perPage=${perPage}`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  const data = await tryFetch(
+    `${API_BASE}/api/market/crypto?currency=${encodeURIComponent(currency)}&perPage=${perPage}`
+  );
+  return data || DEMO_CRYPTO_MARKETS;
 }
 
 /**
  * Fetch OHLC chart data for a specific crypto coin.
- * @param {string} coinId - CoinGecko coin ID (e.g., "bitcoin")
- * @param {string} [currency='eur'] - Fiat currency
- * @param {number} [days=30] - Number of days
- * @returns {Promise<Array<{time: number, open: number, high: number, low: number, close: number}>>}
  */
 export async function fetchCryptoChart(coinId, currency = 'eur', days = 30) {
-  const res = await fetch(`${API_BASE}/api/market/crypto/${encodeURIComponent(coinId)}/chart?currency=${encodeURIComponent(currency)}&days=${days}`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || res.statusText);
-  }
-  return res.json();
+  const data = await tryFetch(
+    `${API_BASE}/api/market/crypto/${encodeURIComponent(coinId)}/chart?currency=${encodeURIComponent(currency)}&days=${days}`
+  );
+  return data || getDemoCryptoChart(coinId, days);
 }
