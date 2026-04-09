@@ -12,6 +12,7 @@ export const de = {
     kalender: 'Kalender',
     team: 'Team',
     kampagnen: 'Kampagnen',
+    workflows: 'Workflows',
     einstellungen: 'Einstellungen',
   },
   settings: {

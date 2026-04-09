@@ -29,6 +29,11 @@ import './styles/email.css';
 import './styles/team.css';
 import './styles/campaigns.css';
 import './styles/calendar.css';
+import './styles/workflows.css';
+import './styles/onboarding.css';
+import './styles/notifications.css';
+import './styles/bulk.css';
+import './styles/mobile.css';
 import App from './App.jsx';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';

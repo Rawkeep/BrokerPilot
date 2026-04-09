@@ -12,6 +12,7 @@ import { CampaignsPage } from './components/pages/CampaignsPage.jsx';
 import { CalendarPage } from './components/pages/CalendarPage.jsx';
 import { TeamPage } from './components/pages/TeamPage.jsx';
 import { AnalyticsPage } from './components/pages/AnalyticsPage.jsx';
+import { WorkflowPage } from './components/pages/WorkflowPage.jsx';
 import { ClientPortal } from './components/portal/ClientPortal.jsx';
 import { useSettingsStore } from './stores/settingsStore';
 import { useAuthStore } from './stores/authStore.js';
@@ -40,6 +41,7 @@ function AppRoutes() {
         <Route path="/kalender" element={<CalendarPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/kampagnen" element={<CampaignsPage />} />
+        <Route path="/workflows" element={<WorkflowPage />} />
         <Route path="/einstellungen" element={<EinstellungenPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

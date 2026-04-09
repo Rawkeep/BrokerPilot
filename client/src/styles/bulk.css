@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Bulk Actions — Floating toolbar for pipeline multi-select
+   ========================================================================== */
+
+.bulk-actions {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-overlay);
+  animation: bulk-slide-up 250ms ease-out;
+}
+
+@keyframes bulk-slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* --- Bar --- */
+.bulk-actions__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+[data-theme="dark"] .bulk-actions__bar {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Count --- */
+.bulk-actions__count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  white-space: nowrap;
+  padding-right: var(--spacing-sm);
+  border-right: 1px solid var(--color-border);
+}
+
+/* --- Actions row --- */
+.bulk-actions__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* --- Button --- */
+.bulk-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.bulk-actions__btn:hover {
+  background: var(--glass-bg);
+  border-color: var(--color-accent);
+}
+
+.bulk-actions__btn--danger {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.bulk-actions__btn--danger:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: var(--color-error);
+}
+
+/* --- Close button --- */
+.bulk-actions__close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.bulk-actions__close:hover {
+  color: var(--color-text);
+}
+
+/* --- Dropdown wrapper --- */
+.bulk-actions__dropdown-wrap {
+  position: relative;
+}
+
+/* --- Dropdown menu (opens above) --- */
+.bulk-actions__dropdown {
+  position: absolute;
+  min-width: 160px;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--glass-shadow);
+  z-index: var(--z-dropdown);
+}
+
+.bulk-actions__dropdown--above {
+  bottom: calc(100% + var(--spacing-sm));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bulk-actions__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.bulk-actions__dropdown-item:hover {
+  background: var(--glass-bg);
+}
+
+/* --- Member color dot --- */
+.bulk-actions__member-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* --- Tag input --- */
+.bulk-actions__tag-input {
+  display: flex;
+  gap: 4px;
+  padding: var(--spacing-sm);
+}
+
+.bulk-actions__tag-input input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  outline: none;
+}
+
+.bulk-actions__tag-input input:focus {
+  border-color: var(--color-accent);
+}
+
+.bulk-actions__tag-add {
+  padding: 4px 8px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.bulk-actions__tag-add:hover {
+  background: var(--color-accent-hover);
+}
+
+/* --- Delete confirmation overlay --- */
+.bulk-actions__confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+.bulk-actions__confirm {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  max-width: 320px;
+}
+
+.bulk-actions__confirm p {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.bulk-actions__confirm-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .bulk-actions {
+    bottom: 72px; /* above mobile bottom nav */
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+    transform: none;
+  }
+
+  .bulk-actions__bar {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bulk-actions__actions {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .bulk-actions__count {
+    width: 100%;
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-sm);
+    padding-right: 0;
+  }
+}

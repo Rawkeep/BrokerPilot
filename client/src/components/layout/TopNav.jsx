@@ -4,6 +4,7 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { BROKER_TYPES } from '../../../../shared/brokerTypes.js';
 import { de } from '../../i18n/de.js';
 import { HamburgerMenu } from './HamburgerMenu.jsx';
+import { NotificationCenter } from './NotificationCenter.jsx';
 
 const PATH_MAP = {
   dashboard: '/dashboard',
@@ -14,6 +15,7 @@ const PATH_MAP = {
   kalender: '/kalender',
   team: '/team',
   kampagnen: '/kampagnen',
+  workflows: '/workflows',
   einstellungen: '/einstellungen',
 };
 
@@ -41,6 +43,8 @@ export function TopNav() {
           </NavLink>
         ))}
       </div>
+
+      <NotificationCenter />
 
       <button
         className="top-nav__hamburger"
