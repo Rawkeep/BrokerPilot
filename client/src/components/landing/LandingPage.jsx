@@ -12,9 +12,9 @@ const FEATURES = [
     desc: 'Echtzeit-KPIs, Conversion-Funnels und PDF-Reports auf Knopfdruck.',
   },
   {
-    icon: '\u26A1',
+    icon: '⚡',
     title: 'Workflow Automation',
-    desc: 'Visueller Builder f\u00FCr automatisierte Prozesse mit 7 Aktionstypen.',
+    desc: 'Visueller Builder für automatisierte Prozesse mit 7 Aktionstypen.',
   },
   {
     icon: '\u{1F4E7}',
@@ -24,17 +24,17 @@ const FEATURES = [
   {
     icon: '\u{1F4C5}',
     title: 'Kalender',
-    desc: 'Terminplanung direkt im CRM mit Lead-Verkn\u00FCpfung und Erinnerungen.',
+    desc: 'Terminplanung direkt im CRM mit Lead-Verknüpfung und Erinnerungen.',
   },
   {
     icon: '\u{1F465}',
     title: 'Team Management',
-    desc: 'Leaderboard, Rollenverwaltung und Lead-Zuweisung f\u00FCr Ihr Team.',
+    desc: 'Leaderboard, Rollenverwaltung und Lead-Zuweisung für Ihr Team.',
   },
   {
     icon: '\u{1F525}',
     title: 'Lead-Scoring',
-    desc: 'Automatische Bewertung mit Hot/Warm/Cold-Tiers f\u00FCr priorisierte Akquise.',
+    desc: 'Automatische Bewertung mit Hot/Warm/Cold-Tiers für priorisierte Akquise.',
   },
   {
     icon: '\u{1F4F1}',
@@ -47,7 +47,7 @@ const BROKER_TYPES = [
   { icon: '\u{1F3E0}', name: 'Immobilien' },
   { icon: '\u{20BF}',  name: 'Krypto' },
   { icon: '\u{1F4B9}', name: 'Finanz' },
-  { icon: '\u{1F6E1}\uFE0F', name: 'Versicherung' },
+  { icon: '\u{1F6E1}️', name: 'Versicherung' },
   { icon: '\u{1F4C8}', name: 'Investment' },
 ];
 
@@ -68,7 +68,7 @@ const PRICING = [
   },
   {
     name: 'Professional',
-    price: '\u20AC49',
+    price: '€49',
     period: '/Monat',
     features: [
       'Unbegrenzte Leads',
@@ -76,7 +76,7 @@ const PRICING = [
       'Unbegrenzte KI-Anfragen',
       'Alle Features inklusive',
       'Workflow Automation',
-      'Priorit\u00E4ts-Support',
+      'Prioritäts-Support',
     ],
     cta: 'Jetzt buchen',
     popular: true,
@@ -100,9 +100,9 @@ const PRICING = [
 
 const TESTIMONIALS = [
   {
-    quote: 'BrokerPilot hat unseren Umsatz um 40% gesteigert. Die KI-Agenten sparen uns t\u00E4glich Stunden.',
+    quote: 'BrokerPilot hat unseren Umsatz um 40% gesteigert. Die KI-Agenten sparen uns täglich Stunden.',
     author: 'Thomas M.',
-    role: 'Immobilienmakler, M\u00FCnchen',
+    role: 'Immobilienmakler, München',
   },
   {
     quote: 'Endlich ein CRM, das unseren Krypto-Workflow versteht. Die automatisierten Pipelines sind grandios.',
@@ -119,7 +119,7 @@ const TESTIMONIALS = [
 const STATS = [
   { number: '500+', label: 'Aktive Broker' },
   { number: '10.000+', label: 'Verwaltete Leads' },
-  { number: '\u20AC50M+', label: 'Pipeline-Volumen' },
+  { number: '€50M+', label: 'Pipeline-Volumen' },
 ];
 
 export function LandingPage() {
@@ -145,7 +145,7 @@ export function LandingPage() {
         <div className="landing__container">
           <span className="landing__hero-badge">Neu: KI-Agenten 2.0</span>
           <h1 className="landing__hero-title">
-            Das KI-gest\u00FCtzte Broker-CRM{'\n'}der n\u00E4chsten Generation
+            Das KI-gestützte Broker-CRM{'\n'}der nächsten Generation
           </h1>
           <p className="landing__hero-subtitle">
             Automatisieren Sie Ihren gesamten Vertriebsprozess mit intelligenten
@@ -161,13 +161,13 @@ export function LandingPage() {
           </div>
           <div className="landing__hero-checks">
             <span className="landing__hero-check">
-              <span className="landing__hero-check-icon">{'\u2713'}</span> 5 Broker-Typen
+              <span className="landing__hero-check-icon">{'✓'}</span> 5 Broker-Typen
             </span>
             <span className="landing__hero-check">
-              <span className="landing__hero-check-icon">{'\u2713'}</span> KI-Agenten
+              <span className="landing__hero-check-icon">{'✓'}</span> KI-Agenten
             </span>
             <span className="landing__hero-check">
-              <span className="landing__hero-check-icon">{'\u2713'}</span> Keine Kreditkarte
+              <span className="landing__hero-check-icon">{'✓'}</span> Keine Kreditkarte
             </span>
           </div>
         </div>
@@ -179,7 +179,7 @@ export function LandingPage() {
           <p className="landing__section-label">Features</p>
           <h2 className="landing__section-title">Alles, was Sie brauchen</h2>
           <p className="landing__section-desc">
-            Ein komplettes CRM-System mit KI-Power \u2014 speziell f\u00FCr Broker entwickelt.
+            Ein komplettes CRM-System mit KI-Power — speziell für Broker entwickelt.
           </p>
           <div className="landing__features-grid">
             {FEATURES.map((f) => (
@@ -197,7 +197,7 @@ export function LandingPage() {
       <section className="landing__broker-types">
         <div className="landing__container">
           <p className="landing__section-label">Broker-Typen</p>
-          <h2 className="landing__section-title">Spezialisiert f\u00FCr Ihren Markt</h2>
+          <h2 className="landing__section-title">Spezialisiert für Ihren Markt</h2>
           <p className="landing__section-desc">
             Jeder Typ mit angepasster Pipeline, Feldern und KI-Konfiguration.
           </p>
@@ -210,7 +210,7 @@ export function LandingPage() {
             ))}
           </div>
           <p className="landing__broker-note">
-            Wechseln Sie jederzeit zwischen Broker-Typen \u2014 Ihre Daten bleiben erhalten.
+            Wechseln Sie jederzeit zwischen Broker-Typen — Ihre Daten bleiben erhalten.
           </p>
         </div>
       </section>
@@ -221,7 +221,7 @@ export function LandingPage() {
           <p className="landing__section-label">Preise</p>
           <h2 className="landing__section-title">Transparent & fair</h2>
           <p className="landing__section-desc">
-            Starten Sie kostenlos und skalieren Sie mit Ihrem Gesch\u00E4ft.
+            Starten Sie kostenlos und skalieren Sie mit Ihrem Geschäft.
           </p>
           <div className="landing__pricing-grid">
             {PRICING.map((tier) => (
@@ -292,7 +292,7 @@ export function LandingPage() {
             Bereit, Ihren Vertrieb zu revolutionieren?
           </h2>
           <p className="landing__cta-subtitle">
-            Starten Sie noch heute kostenlos \u2014 keine Kreditkarte erforderlich.
+            Starten Sie noch heute kostenlos — keine Kreditkarte erforderlich.
           </p>
           <Link to="/dashboard" className="landing__btn landing__btn--primary">
             Kostenlos starten
@@ -306,7 +306,7 @@ export function LandingPage() {
           <div className="landing__footer-brand">
             <div className="landing__footer-brand-name">{'\u{1F680}'} BrokerPilot</div>
             <p>
-              Das KI-gest\u00FCtzte Broker-CRM der n\u00E4chsten Generation.
+              Das KI-gestützte Broker-CRM der nächsten Generation.
               Automatisieren Sie Ihren Vertrieb mit intelligenten Agenten.
             </p>
           </div>

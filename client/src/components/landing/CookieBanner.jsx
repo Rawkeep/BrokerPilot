@@ -46,7 +46,7 @@ export function CookieBanner() {
         <div className="cookie-banner__text">
           <h4>Cookie-Einstellungen</h4>
           <p>
-            Wir verwenden Cookies, um Ihnen die bestm\u00F6gliche Erfahrung zu bieten.{' '}
+            Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.{' '}
             <Link to="/datenschutz">Mehr erfahren</Link>
           </p>
         </div>
@@ -76,7 +76,7 @@ export function CookieBanner() {
           <div className="cookie-banner__settings">
             <CookieSetting
               name="Notwendig"
-              desc="Technisch erforderliche Cookies f\u00FCr den Betrieb der Website."
+              desc="Technisch erforderliche Cookies für den Betrieb der Website."
               checked={true}
               disabled={true}
             />
