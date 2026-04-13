@@ -41,6 +41,6 @@ test.describe('Dashboard', () => {
   test('should display navigation tabs', async ({ page }) => {
     await page.goto('/dashboard');
     await expect(page.locator('.top-nav__tabs')).toBeVisible();
-    await expect(page.locator('.top-nav__brand')).toContainText('BrokerPilot');
+    await expect(page.locator('.top-nav__brand').first()).toContainText('BrokerPilot');
   });
 });
