@@ -9,13 +9,15 @@ const PATH_MAP = {
   markt: '/markt',
   'ai-agents': '/ai-agents',
   kalender: '/kalender',
+  akademie: '/akademie',
+  trading: '/trading',
   einstellungen: '/einstellungen',
 };
 
 export function HamburgerMenu({ isOpen, onClose }) {
   const brokerType = useSettingsStore((s) => s.brokerType);
   const navOrder =
-    BROKER_TYPES[brokerType]?.navOrder || ['dashboard', 'pipeline', 'markt', 'ai-agents', 'einstellungen'];
+    BROKER_TYPES[brokerType]?.navOrder || ['dashboard', 'pipeline', 'markt', 'trading', 'ai-agents', 'einstellungen'];
 
   return (
     <>

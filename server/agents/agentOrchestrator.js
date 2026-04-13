@@ -14,6 +14,7 @@ import { relayAIRequest } from '../services/aiProxy.js';
 import * as leadQualifier from './leadQualifier.js';
 import * as marketAnalyst from './marketAnalyst.js';
 import * as swotStrategist from './swotStrategist.js';
+import * as tradingAgent from './tradingAgent.js';
 
 /** Registry mapping agentType to agent module */
 const AGENT_REGISTRY = {
@@ -42,6 +43,15 @@ const AGENT_REGISTRY = {
       ),
     parseResponse: swotStrategist.parseResponse,
     enrichData: null,
+  },
+  tradingAgent: {
+    buildPrompt: (payload, enrichedData) =>
+      tradingAgent.buildPrompt(enrichedData, payload.portfolio),
+    parseResponse: tradingAgent.parseResponse,
+    enrichData: async (payload) => {
+      const scanResults = await tradingAgent.scanMarkets(payload.scanOptions);
+      return tradingAgent.pickTopCandidates(scanResults, 12);
+    },
   },
 };
 

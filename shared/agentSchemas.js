@@ -62,7 +62,7 @@ export const SwotStrategistOutputSchema = z.object({
 
 // --- Agent Run Request Schema ---
 
-export const AGENT_TYPES = ['leadQualifier', 'marketAnalyst', 'swotStrategist'];
+export const AGENT_TYPES = ['leadQualifier', 'marketAnalyst', 'swotStrategist', 'tradingAgent'];
 
 export const AgentRunRequestSchema = z.object({
   agentType: z.enum(AGENT_TYPES),

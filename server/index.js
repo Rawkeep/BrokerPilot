@@ -18,6 +18,7 @@ import { pluginRouter } from './routes/plugins.js';
 import { emailTemplateRouter } from './routes/emailTemplates.js';
 import { campaignRouter } from './routes/campaigns.js';
 import { billingRouter, webhookHandler } from './routes/billing.js';
+import { tradingRouter } from './routes/trading.js';
 import { createCacheMiddleware } from './middleware/cache.js';
 import { PORT as DEFAULT_PORT, RATE_LIMIT_WINDOW, RATE_LIMIT_MAX } from '../shared/constants.js';
 
@@ -101,6 +102,7 @@ app.use('/api', pluginRouter);
 app.use('/api', emailTemplateRouter);
 app.use('/api', campaignRouter);
 app.use('/api', billingRouter);
+app.use('/api', tradingRouter);
 
 // --- Static Files ---
 

@@ -34,6 +34,7 @@ import './styles/team.css';
 import './styles/campaigns.css';
 import './styles/calendar.css';
 import './styles/workflows.css';
+import './styles/trading.css';
 import './styles/onboarding.css';
 import './styles/notifications.css';
 import './styles/bulk.css';

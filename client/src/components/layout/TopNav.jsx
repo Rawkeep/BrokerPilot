@@ -16,6 +16,8 @@ const PATH_MAP = {
   team: '/team',
   kampagnen: '/kampagnen',
   workflows: '/workflows',
+  akademie: '/akademie',
+  trading: '/trading',
   einstellungen: '/einstellungen',
 };
 
@@ -24,7 +26,7 @@ export function TopNav() {
   const { language } = useLanguage(); // triggers re-render on language change
   const brokerType = useSettingsStore((s) => s.brokerType);
   const navOrder =
-    BROKER_TYPES[brokerType]?.navOrder || ['dashboard', 'pipeline', 'markt', 'ai-agents', 'einstellungen'];
+    BROKER_TYPES[brokerType]?.navOrder || ['dashboard', 'pipeline', 'markt', 'trading', 'ai-agents', 'einstellungen'];
 
   return (
     <nav className="top-nav">

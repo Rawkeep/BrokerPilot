@@ -21,6 +21,8 @@ const CalendarPage = lazy(() => import('./components/pages/CalendarPage.jsx'));
 const TeamPage = lazy(() => import('./components/pages/TeamPage.jsx'));
 const CampaignsPage = lazy(() => import('./components/pages/CampaignsPage.jsx'));
 const WorkflowPage = lazy(() => import('./components/pages/WorkflowPage.jsx'));
+const TradingPage = lazy(() => import('./components/pages/TradingPage.jsx'));
+const LearningHub = lazy(() => import('./components/learning/LearningHub.jsx'));
 const ClientPortal = lazy(() => import('./components/portal/ClientPortal.jsx'));
 const LandingPage = lazy(() => import('./components/landing/LandingPage.jsx').then(m => ({ default: m.LandingPage })));
 const ImpressumPage = lazy(() => import('./components/landing/LegalPages.jsx').then(m => ({ default: m.ImpressumPage })));
@@ -53,7 +55,9 @@ function AppRoutes() {
               <Route path="/team" element={<TeamPage />} />
               <Route path="/kampagnen" element={<CampaignsPage />} />
               <Route path="/workflows" element={<WorkflowPage />} />
+              <Route path="/trading" element={<TradingPage />} />
               <Route path="/einstellungen" element={<EinstellungenPage />} />
+              <Route path="/akademie" element={<LearningHub />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>
