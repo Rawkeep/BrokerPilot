@@ -127,8 +127,9 @@ function CampaignEditor({ campaign, onSave, onCancel }) {
   }
 
   function handleSave() {
+    if (!form.name.trim()) return;
     onSave({
-      name: form.name,
+      name: form.name.trim(),
       trigger: form.trigger,
       enabled: form.enabled,
       steps: form.steps,
@@ -193,8 +194,8 @@ function CampaignEditor({ campaign, onSave, onCancel }) {
       </div>
 
       <div className="campaigns__editor-actions">
-        <button className="btn btn--primary" onClick={handleSave}>Speichern</button>
-        <button className="btn btn--secondary" onClick={onCancel}>Abbrechen</button>
+        <button type="button" className="btn btn--primary" onClick={handleSave} disabled={!form.name.trim()}>Speichern</button>
+        <button type="button" className="btn btn--secondary" onClick={onCancel}>Abbrechen</button>
       </div>
     </div>
   );
@@ -366,15 +367,22 @@ export function CampaignManager() {
       : `${API_BASE}/api/campaigns/${editing.id}`;
     const method = isNew ? 'POST' : 'PUT';
 
-    const res = await fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    if (res.ok) {
-      setEditing(null);
-      loadCampaigns();
+      if (res.ok) {
+        setEditing(null);
+        loadCampaigns();
+      } else {
+        const body = await res.json().catch(() => ({}));
+        alert(`Fehler beim Speichern: ${body.error || res.statusText}`);
+      }
+    } catch (err) {
+      alert(`Netzwerkfehler: ${err.message}`);
     }
   }
 

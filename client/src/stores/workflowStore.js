@@ -59,11 +59,11 @@ export const useWorkflowStore = create(
           workflows: [
             ...state.workflows,
             {
-              ...workflow,
               id: crypto.randomUUID(),
               createdAt: new Date().toISOString(),
               lastRun: null,
               runCount: 0,
+              ...workflow,
             },
           ],
         })),

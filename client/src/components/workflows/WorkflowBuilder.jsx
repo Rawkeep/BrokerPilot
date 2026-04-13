@@ -203,7 +203,8 @@ function WorkflowEditor({ workflow, onClose }) {
   const [showTypeSelector, setShowTypeSelector] = useState(false);
 
   const handleSave = () => {
-    updateWorkflow(workflow.id, { name, description, trigger, steps });
+    if (!name.trim()) return;
+    updateWorkflow(workflow.id, { name: name.trim(), description, trigger, steps });
     onClose();
   };
 
@@ -362,13 +363,13 @@ function WorkflowEditor({ workflow, onClose }) {
       </div>
 
       <div className="workflow__editor-actions">
-        <button className="btn btn--primary" onClick={handleSave}>
+        <button type="button" className="btn btn--primary" onClick={handleSave} disabled={!name.trim()}>
           Speichern
         </button>
-        <button className="btn btn--secondary" onClick={onClose}>
+        <button type="button" className="btn btn--secondary" onClick={onClose}>
           Abbrechen
         </button>
-        <button className="btn btn--danger" onClick={handleDelete}>
+        <button type="button" className="btn btn--danger" onClick={handleDelete}>
           Löschen
         </button>
       </div>
@@ -442,17 +443,20 @@ export function WorkflowBuilder() {
   const [editing, setEditing] = useState(null);
 
   const handleNew = () => {
+    const id = crypto.randomUUID();
     const newWorkflow = {
+      id,
       name: 'Neuer Workflow',
       description: '',
       trigger: 'manual',
       enabled: false,
       steps: [],
+      createdAt: new Date().toISOString(),
+      lastRun: null,
+      runCount: 0,
     };
     addWorkflow(newWorkflow);
-    // Get the newly added workflow (last in list)
-    const latest = useWorkflowStore.getState().workflows;
-    setEditing(latest[latest.length - 1]);
+    setEditing(newWorkflow);
   };
 
   return (
