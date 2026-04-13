@@ -2,7 +2,7 @@ export const BROKER_TYPES = {
   immobilien: {
     label: 'Immobilien',
     defaultPage: '/pipeline',
-    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'einstellungen'],
+    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'akademie', 'einstellungen'],
     accentColor: 'immobilien',
     pipelineStages: [
       { id: 'anfrage', label: 'Anfrage', order: 0 },
@@ -23,7 +23,7 @@ export const BROKER_TYPES = {
   krypto: {
     label: 'Krypto',
     defaultPage: '/markt',
-    navOrder: ['markt', 'dashboard', 'pipeline', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'einstellungen'],
+    navOrder: ['markt', 'dashboard', 'pipeline', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'akademie', 'einstellungen'],
     accentColor: 'krypto',
     pipelineStages: [
       { id: 'interesse', label: 'Interesse', order: 0 },
@@ -43,7 +43,7 @@ export const BROKER_TYPES = {
   finanz: {
     label: 'Finanz & Banking',
     defaultPage: '/dashboard',
-    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'einstellungen'],
+    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'akademie', 'einstellungen'],
     accentColor: 'finanz',
     pipelineStages: [
       { id: 'kontakt', label: 'Erstkontakt', order: 0 },
@@ -63,7 +63,7 @@ export const BROKER_TYPES = {
   versicherung: {
     label: 'Versicherung',
     defaultPage: '/dashboard',
-    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'einstellungen'],
+    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'akademie', 'einstellungen'],
     accentColor: 'versicherung',
     pipelineStages: [
       { id: 'kontakt', label: 'Erstkontakt', order: 0 },
@@ -83,7 +83,7 @@ export const BROKER_TYPES = {
   investment: {
     label: 'Investment-Banking',
     defaultPage: '/dashboard',
-    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'einstellungen'],
+    navOrder: ['dashboard', 'pipeline', 'markt', 'ai-agents', 'analytics', 'kalender', 'team', 'kampagnen', 'workflows', 'akademie', 'einstellungen'],
     accentColor: 'investment',
     pipelineStages: [
       { id: 'akquise', label: 'Akquise', order: 0 },

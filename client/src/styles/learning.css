@@ -1,0 +1,526 @@
+/* ==========================================================================
+   Learning Hub — Academy, Lesson Viewer, Glossary, Badges
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hub Layout
+   -------------------------------------------------------------------------- */
+.learning-hub {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.learning-hub__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.learning-hub__header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+/* --------------------------------------------------------------------------
+   Progress Overview — Two Cards Side by Side
+   -------------------------------------------------------------------------- */
+.learning-hub__overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .learning-hub__overview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.learning-hub__level-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.learning-hub__level-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.learning-hub__level-label {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.learning-hub__tip-card {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.learning-hub__tip-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.learning-hub__tip-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.learning-hub__tip-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Progress Bar (shared)
+   -------------------------------------------------------------------------- */
+.learning-hub__progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--glass-bg);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: var(--spacing-xs) 0;
+}
+
+.learning-hub__progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  min-width: 2px;
+}
+
+.learning-hub__progress-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+/* --------------------------------------------------------------------------
+   Level Selector
+   -------------------------------------------------------------------------- */
+.learning-hub__level-selector {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.learning-hub__level-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.learning-hub__level-btn:hover {
+  background: var(--glass-bg);
+}
+
+.learning-hub__level-btn.active {
+  background: var(--glass-bg);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* --------------------------------------------------------------------------
+   Tab Navigation
+   -------------------------------------------------------------------------- */
+.learning-hub__tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.learning-hub__tab {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all var(--transition-fast);
+}
+
+.learning-hub__tab:hover {
+  color: var(--color-text);
+}
+
+.learning-hub__tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* --------------------------------------------------------------------------
+   Learning Paths Grid
+   -------------------------------------------------------------------------- */
+.learning-hub__paths {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 900px) {
+  .learning-hub__paths {
+    grid-template-columns: 1fr;
+  }
+}
+
+.learning-hub__path-card {
+  padding: var(--spacing-lg);
+}
+
+.learning-hub__path-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.learning-hub__path-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.learning-hub__path-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Lesson List (inside path card)
+   -------------------------------------------------------------------------- */
+.learning-hub__lessons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+}
+
+.learning-hub__lesson {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+
+.learning-hub__lesson:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-accent);
+}
+
+.learning-hub__lesson.done {
+  opacity: 0.7;
+}
+
+.learning-hub__lesson.done:hover {
+  opacity: 1;
+}
+
+.learning-hub__lesson-check {
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.learning-hub__lesson-title {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.learning-hub__lesson-duration {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Glossary
+   -------------------------------------------------------------------------- */
+.learning-hub__glossary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.learning-hub__glossary-search {
+  width: 100%;
+  max-width: 400px;
+}
+
+.learning-hub__glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 600px) {
+  .learning-hub__glossary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.learning-hub__glossary-card {
+  padding: var(--spacing-md);
+}
+
+.learning-hub__glossary-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.learning-hub__glossary-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.learning-hub__glossary-header h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+  flex: 1;
+}
+
+.learning-hub__glossary-short {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.learning-hub__glossary-details {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.learning-hub__glossary-details summary {
+  cursor: pointer;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.learning-hub__glossary-details summary:hover {
+  text-decoration: underline;
+}
+
+.learning-hub__glossary-details p {
+  margin: var(--spacing-sm) 0 0 0;
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Badges
+   -------------------------------------------------------------------------- */
+.learning-hub__badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.learning-hub__badge-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+}
+
+.learning-hub__badge-card.locked {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+.learning-hub__badge-card.earned {
+  border-color: var(--color-accent);
+}
+
+.learning-hub__badge-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.learning-hub__badge-card h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.learning-hub__badge-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Lesson Viewer
+   ========================================================================== */
+.lesson-viewer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lesson-viewer__back {
+  margin-bottom: var(--spacing-lg);
+}
+
+.lesson-viewer__card {
+  padding: var(--spacing-xl);
+}
+
+.lesson-viewer__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.lesson-viewer__duration {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  background: var(--glass-bg);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-lg);
+}
+
+.lesson-viewer__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.lesson-viewer__text {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.lesson-viewer__example {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--spacing-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.lesson-viewer__example strong {
+  color: var(--color-accent);
+}
+
+.lesson-viewer__tip {
+  background: rgba(34, 197, 94, 0.08);
+  border-left: 3px solid var(--color-success);
+  padding: var(--spacing-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.lesson-viewer__tip strong {
+  color: var(--color-success);
+}
+
+.lesson-viewer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.lesson-viewer__list li {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+  border: 1px solid var(--color-border);
+}
+
+.lesson-viewer__actions {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Tweaks
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .learning-hub__header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .lesson-viewer__card {
+    padding: var(--spacing-lg);
+  }
+
+  .lesson-viewer__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .learning-hub__tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .learning-hub__tab {
+    white-space: nowrap;
+  }
+
+  .learning-hub__badges {
+    grid-template-columns: 1fr;
+  }
+}

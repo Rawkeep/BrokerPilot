@@ -13,6 +13,7 @@ export const en = {
     team: 'Team',
     kampagnen: 'Campaigns',
     workflows: 'Workflows',
+    akademie: 'Academy',
     einstellungen: 'Settings',
   },
   settings: {
